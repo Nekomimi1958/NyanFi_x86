@@ -2,8 +2,11 @@
 
 ![Screenshot](screenshot.png)
 
-NyanFi is a dual pane file manager.
-Supported language is Japanese only.
+NyanFi is a dual pane file manager for Windows.  
+Supported language is Japanese only.  
 
-## Development environment
-C++Builder 10.3
+## Download Executable File
+http://nekomimi.la.coocan.jp/freesoft/nyanfi.htm  
+
+## Development Environment
+C++Builder 10.3 (BCC32)
