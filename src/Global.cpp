@@ -351,6 +351,7 @@ UnicodeString FExtGetInf;		//ファイル情報を取得する拡張子
 UnicodeString FExtNoInf;		//ファイル情報を取得しない拡張子
 UnicodeString NoInfPath;		//ファイル情報を取得しないパス
 UnicodeString EmpInfItems;		//強調表示するファイル情報項目(|区切り)
+TStringList  *HideInfItems;		//隠すファイル情報項目(拡張子=|区切り形式のリスト)
 
 UnicodeString FExtImgPrv;		//イメージプレビューを行う拡張子
 UnicodeString FExtNoImgPrv;		//イメージプレビューを行わない拡張子
@@ -1142,17 +1143,10 @@ void InitializeGlobal()
 	IniFile->DeleteKey(SCT_General, "FindKeyTwoStr");		//v12.87
 	IniFile->DeleteKey(SCT_Option,	"OneStepInDblPg");		//v12.80
 	IniFile->DeleteKey(SCT_Option,	"SkipInfIfKey");		//v12.72
-
 	if (IniFile->KeyExists(SCT_Option,	"NoClsTabBtn")) {	//v12.56
 		IniFile->WriteBool(SCT_Option,	"ShowClsTabBtn", !IniFile->ReadBool(SCT_Option, "NoClsTabBtn"));
 		IniFile->DeleteKey(SCT_Option,	"NoClsTabBtn");
 	}
-
-	IniFile->DeleteKey(SCT_Option,	"LimitGetRarInf");		//v11.65
-	IniFile->DeleteKey(SCT_Option,	"GetInfLimitSize");
-	IniFile->DeleteKey(SCT_General,	"FindPathCol");			//v11.60
-	IniFile->DeleteKey(SCT_General,	"FindTagPathCol");
-	IniFile->DeleteKey(SCT_General,	"FindTagPathWidth");
 
 	CurStt = &ListStt[CurListTag];
 	OppStt = &ListStt[OppListTag];
@@ -1297,6 +1291,7 @@ void InitializeGlobal()
 	ToolBtnListI	  = CreStringList();
 	CnvCharList 	  = CreStringList();
 	LogBufList		  = CreStringList();
+	HideInfItems	  = CreStringList();
 
 	//コマンドリストを作成
 	CommandList = CreStringList();
@@ -1827,7 +1822,14 @@ void InitializeGlobal()
 		{_T("MarkImgPath=\"\""),					(TObject*)&MarkImgPath},
 		{_T("MarkImgFExt=\".jpg\""),				(TObject*)&MarkImgFExt},
 		{_T("MarkImgMemo=\"しおり\""),				(TObject*)&MarkImgMemo},
+
+#if defined(_WIN64)
+		{_T("FExt7zDll=\".lzh.cab.iso.arj.chm.msi.wim\""),
+													(TObject*)&FExt7zDll},
+#else
 		{_T("FExt7zDll=\".arj.chm.msi.wim\""),		(TObject*)&FExt7zDll},
+#endif
+
 		{_T("SttBarFmt=\"$F\""),					(TObject*)&SttBarFmt},
 		{_T("SttClockFmt=\"\""),					(TObject*)&SttClockFmt},
 		{_T("DrvInfFmtR=\"$VN    $US Use    $FS Free($FR) \""),
@@ -2265,6 +2267,7 @@ void InitializeGlobal()
 		{_T("S:BakSetupList="),				(TObject*)BakSetupList},
 		{_T("S:CustomColors="),				(TObject*)UserModule->ColorDlg->CustomColors},
 		{_T("S:TagColList="),				(TObject*)usr_TAG->TagColList},
+		{_T("S:HideInfItems="),				(TObject*)HideInfItems},
 
 		//リスト	(prefix = L:)	最大項目数,引用符を外す
 		{_T("L:DirStack=30,false"),			(TObject*)DirStack},
@@ -3604,7 +3607,7 @@ UnicodeString make_ResponseFile(TStringList *lst,
 				if ((arc_t!=UARCTYP_RAR && starts_AT(fnam)) || (arc_t==UARCTYP_CAB && StartsStr('-', fnam)))
 					r_lst->Add(add_quot_if_spc(fnam));
 				else {
-					//※unrar32.dll のバグ? 対策
+					//※unrarXX.dll のバグ? 対策
 					if (starts_AT(fnam)) fnam = "?" + exclude_top(fnam);
 					f_lst->Add(add_quot_if_spc(fnam));
 				}
@@ -4151,7 +4154,7 @@ bool SetTmpFile(
 
 			if (!not_unpk && !file_exists(tmp_name)) {
 				fp->tmp_name = EmptyStr;
-				if (SPI->TestFExt(get_extension(fp->arc_name), true)) {
+				if (!is_X64() && SPI->TestFExt(get_extension(fp->arc_name), true)) {
 					if (!SPI->UnPack(fp->arc_name, fp->f_name, tmp_path)) Abort();
 				}
 				else {
@@ -5160,7 +5163,7 @@ bool check_file_ex(UnicodeString fnam, flist_stt *lst_stt)
 	if (!lst_stt->find_PrpKwd.IsEmpty()) {
 		std::unique_ptr<TStringList> lst(new TStringList());	//ファイル情報用
 		TStringList *i_lst = lst.get();
-		add_PropLine(_T("種類"), usr_SH->get_FileTypeStr(fnam, true), i_lst);
+		add_PropLine(_T("種類"), usr_SH->get_FileTypeStr(fnam), i_lst);
 
 		if (use_Proc) 						get_ProcessingInf(fnam, i_lst);
 
@@ -7634,8 +7637,7 @@ void draw_InfListBox(TListBox *lp, TRect &Rect, int Index, TOwnerDrawState State
 	xp += get_TextWidth(cv, namstr, is_irreg);
 
 	//内容
-	cv->Font->Color = use_fgsel? col_fgSelItem :
-					  contains_wd_i(iname, EmpInfItems.c_str())? col_fgInfEmp : col_fgInf;
+	cv->Font->Color = use_fgsel? col_fgSelItem : test_word_i(iname, EmpInfItems)? col_fgInfEmp : col_fgInf;
 
 	if		(flag & LBFLG_PATH_FIF)	PathNameOut(lbuf, cv, xp, yp);
 	else if (flag & LBFLG_FILE_FIF)	Emphasis_RLO_info(lbuf, cv, xp, yp);
@@ -7809,7 +7811,7 @@ bool get_FileInfList(
 		//項目の種類
 		//----------------------
 		UnicodeString tnam = (!fp->is_dir && fp->is_sym)? UnicodeString("シンボリックリンク")
-														: usr_SH->get_FileTypeStr(fnam, true);
+														: usr_SH->get_FileTypeStr(fnam);
 		//NyanFi 固有のファイル
 		UnicodeString typ_str = get_IniTypeStr(fp);
 		if		(!typ_str.IsEmpty())							tnam.cat_sprintf(_T(" [%s]"), typ_str.c_str());
@@ -7828,6 +7830,10 @@ bool get_FileInfList(
 		}
 
 		add_PropLine(_T("種類"), tnam, lst, LBFLG_TYPE_FIF);
+
+		//ハードリンク数
+		int lnk_cnt = get_HardLinkCount(fnam);
+		if (lnk_cnt>1) add_PropLine(_T("ハードリンク数"), lnk_cnt, lst);
 
 		bool fp_created = false;
 		file_rec *org_fp = fp;

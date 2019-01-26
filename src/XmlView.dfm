@@ -235,10 +235,6 @@ object XmlViewer: TXmlViewer
       Action = UserModule.SizePosToFlieListAction
     end
   end
-  object XMLDocument1: TXMLDocument
-    Left = 64
-    Top = 24
-  end
   object ActionList1: TActionList
     Left = 64
     Top = 88
@@ -281,5 +277,9 @@ object XmlViewer: TXmlViewer
       OnExecute = OpenUrlActionExecute
       OnUpdate = OpenUrlActionUpdate
     end
+  end
+  object XMLDocument1: TXMLDocument
+    Left = 64
+    Top = 24
   end
 end

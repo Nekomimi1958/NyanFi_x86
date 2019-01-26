@@ -488,6 +488,7 @@ extern UnicodeString FExtGetInf;
 extern UnicodeString FExtNoInf;
 extern UnicodeString NoInfPath;
 extern UnicodeString EmpInfItems;
+extern TStringList  *HideInfItems;
 
 extern UnicodeString FExtImgPrv;
 extern UnicodeString FExtNoImgPrv;
