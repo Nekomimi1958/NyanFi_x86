@@ -4470,7 +4470,7 @@ void __fastcall TNyanFiForm::UpdateToolBtn(int scr_mode)
 			if (is_separator(itm_buf[0])) {
 				bp->Style	 = tbsSeparator;
 				bp->AutoSize = false;
-				bp->Width	 = extract_int_def(itm_buf[1], ScaledInt(4));
+				bp->Width	 = extract_int_def(itm_buf[1], Scaled4);
 			}
 			//ボタン
 			else {
@@ -9766,7 +9766,7 @@ void __fastcall TNyanFiForm::FileListBoxMouseDown(TObject *Sender, TMouseButton 
 				b_wd = lp->Canvas->TextWidth(cfp->b_name);
 				if		(ShowIcon)							  b_wd += get_IcoWidth();
 				else if (cfp->is_dir && !DirBraStr.IsEmpty()) b_wd += lp->Canvas->TextWidth(DirBraStr) + 4;
-				else										  b_wd += ScaledInt(8);
+				else										  b_wd += Scaled8;
 			}
 
 			//アイコン部分で個別に選択
@@ -9867,7 +9867,7 @@ void __fastcall TNyanFiForm::FileListBoxDblClick(TObject *Sender)
 			int b_wd = lp->Canvas->TextWidth(cfp->b_name);
 			if		(ShowIcon)							  b_wd += get_IcoWidth();
 			else if (cfp->is_dir && !DirBraStr.IsEmpty()) b_wd += lp->Canvas->TextWidth(DirBraStr) + 4;
-			else										  b_wd += ScaledInt(8);
+			else										  b_wd += Scaled8;
 			on_body = (p.x < b_wd);
 		}
 	}
@@ -16710,7 +16710,7 @@ void __fastcall TNyanFiForm::IncSearchActionExecute(TObject *Sender)
 
 	//疑似キャレット
 	CaretPaintBox->Parent  = (CurListTag==0)? L_StatPanel : R_StatPanel;
-	CaretPaintBox->Width   = ScaledInt(1);
+	CaretPaintBox->Width   = Scaled1;
 	CaretPaintBox->Height  = CaretPaintBox->Parent->ClientHeight - 4;
 	CaretPaintBox->Top	   = 2;
 	CaretPaintBox->Visible = true;
@@ -26532,7 +26532,7 @@ void __fastcall TNyanFiForm::ResultListBoxDrawItem(TWinControl *Control, int Ind
 
 	int yp	 = tmp_rc.Top;
 	int dx	 = 0;
-	int x_mg = ScaledInt(2);
+	int x_mg = Scaled2;
 
 	//項目番号
 	if (GrepShowItemNo) {
@@ -32914,7 +32914,7 @@ void __fastcall TNyanFiForm::TxtSttHeaderDrawPanel(TStatusBar *StatusBar, TStatu
 	//疑似キャレット
 	if (inc_flag) {
 		xp += cv->TextWidth(Panel->Text);
-		draw_Line(cv, xp, Rect.Top+2, xp, Rect.Bottom-2, ScaledInt(1), col_Cursor);
+		draw_Line(cv, xp, Rect.Top + 2, xp, Rect.Bottom-2, ScaledInt(1), col_Cursor);
 	}
 
 	//選択ファイル数
@@ -33583,7 +33583,7 @@ void __fastcall TNyanFiForm::TaskPaintBoxPaint(TObject *Sender)
 	cv->Brush->Color = col_bgTask;
 	cv->FillRect(pp->ClientRect);
 
-	int h  = get_FontHeight(cv->Font) * 5/4 + ScaledInt(4);
+	int h  = get_FontHeight(cv->Font) * 5/4 + Scaled4;
 	int xp = 4;
 	int yp = 2;
 
