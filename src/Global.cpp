@@ -8171,7 +8171,8 @@ UnicodeString get_IniTypeStr(file_rec *fp)
 //---------------------------------------------------------------------------
 bool is_MenuFile(file_rec *fp)
 {
-	return (fp && !fp->is_dummy && !fp->is_ftp && !fp->is_virtual && test_FileExt(fp->f_ext, ".txt")
+	return (fp && !fp->is_dummy && !fp->is_ftp && !fp->is_virtual
+			&& test_FileExt(fp->f_ext, ".txt")
 			&& USAME_TI(get_top_line(fp->f_name), ";[MenuFile]"));
 }
 //---------------------------------------------------------------------------
@@ -8179,7 +8180,8 @@ bool is_MenuFile(file_rec *fp)
 //---------------------------------------------------------------------------
 bool is_ResultList(file_rec *fp)
 {
-	return (fp && !fp->is_dummy && !fp->is_ftp && !fp->is_virtual && test_FileExt(fp->f_ext, ".txt")
+	return (fp && !fp->is_dummy && !fp->is_ftp && !fp->is_virtual
+			&& test_FileExt(fp->f_ext, ".txt")
 			&& USAME_TI(get_top_line(fp->f_name), ";[ResultList]"));
 }
 
