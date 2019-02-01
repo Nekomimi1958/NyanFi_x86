@@ -73,6 +73,8 @@ __published:	// IDE で管理されるコンポーネント
 	TButton *AddKeyBtn;
 	TButton *AddMenuBtn;
 	TButton *AlRightBtn;
+	TButton *AppColorBtn;
+	TButton *AppDesignBtn;
 	TButton *AsoAddBtn;
 	TButton *AsoChgBtn;
 	TButton *AsoDelBtn;
@@ -867,12 +869,15 @@ __published:	// IDE で管理されるコンポーネント
 	void __fastcall FindColUpActionUpdate(TObject *Sender);
 	void __fastcall FindEvEditChange(TObject *Sender);
 	void __fastcall FindEvEditKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
-	void __fastcall KeybdRadioGroupClick(TObject *Sender);
 	void __fastcall FindKeyBtnClick(TObject *Sender);
 	void __fastcall FindXColEditChange(TObject *Sender);
+	void __fastcall KeybdRadioGroupClick(TObject *Sender);
+	void __fastcall AppDesignBtnClick(TObject *Sender);
+	void __fastcall AppColorBtnClick(TObject *Sender);
 
 private:	// ユーザー宣言
 	MarkList *FindMarkList;
+	TStringList *FontBufList;
 	TStringList *ColBufList;
 	TStringList *KeyListBuf[5];
 
