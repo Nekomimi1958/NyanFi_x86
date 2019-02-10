@@ -161,6 +161,7 @@ __published:	// IDE で管理されるコンポーネント
 	TButton *UpExtBtn;
 	TButton *UpMenuBtn;
 	TCheckBox *AddToRecentCheckBox;
+	TCheckBox *AltBackSlashCheckBox;
 	TCheckBox *AltCheckBox;
 	TCheckBox *AniGifCheckBox;
 	TCheckBox *AnimateGifCheckBox;
@@ -346,6 +347,7 @@ __published:	// IDE で管理されるコンポーネント
 	TCheckBox *SureMoveCheckBox;
 	TCheckBox *SureOtherCheckBox;
 	TCheckBox *SureUnPackCheckBox;
+	TCheckBox *SureWorkListCheckBox;
 	TCheckBox *SymColToCheckBox;
 	TCheckBox *SysAtrCheckBox;
 	TCheckBox *TaskTrayCheckBox;
