@@ -1814,7 +1814,6 @@ __published:	// IDE で管理されるコンポーネント
 	void __fastcall SelGitChangedActionExecute(TObject *Sender);
 	void __fastcall SelGitChangedActionUpdate(TObject *Sender);
 	void __fastcall SetFolderIconActionExecute(TObject *Sender);
-	void __fastcall SetDefFoldIcoItemClick(TObject *Sender);
 	void __fastcall SetFolderIconActionUpdate(TObject *Sender);
 
 private:	// ユーザー宣言

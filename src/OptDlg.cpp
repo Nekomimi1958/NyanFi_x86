@@ -1245,7 +1245,7 @@ void __fastcall TOptionDlg::RefSoundBtnClick(TObject *Sender)
 {
 	int tag = ((TComponent*)Sender)->Tag;
 
-	UnicodeString inidir = def_if_empty(ExtractFileDir(rel_to_absdir((tag==0)? SndWarnEdit->Text : SndTaskFinEdit->Text)), ExePath);
+	UnicodeString inidir = def_if_empty(ExtractFileDir(to_absolute_name((tag==0)? SndWarnEdit->Text : SndTaskFinEdit->Text)), ExePath);
 	UserModule->PrepareOpenDlg(_T("サウンドファイルの指定"), F_FILTER_WAV, NULL, inidir);
 
 	UnicodeString fnam;
@@ -1303,7 +1303,7 @@ void __fastcall TOptionDlg::RefBgImgBtnClick(TObject *Sender)
 	TLabeledEdit *ep = (tag==0)? BgImg1Edit : (tag==1)? BgImg2Edit : (tag==2)? SpImgEdit : SpImg2Edit;
 	UserModule->OpenImgDlg->Title = "背景画像の指定";
 	UserModule->SetOpenImgFilter(ep->Text);
-	UserModule->OpenImgDlg->InitialDir = rel_to_absdir(ExtractFilePath(ep->Text));
+	UserModule->OpenImgDlg->InitialDir = to_absolute_name(ExtractFilePath(ep->Text));
 	UserModule->OpenImgDlg->FileName   = EmptyStr;
 	UserModule->OpenImgDlgToEdit(ep, true);
 }
@@ -1315,7 +1315,7 @@ void __fastcall TOptionDlg::ScrBarStyleComboBoxClick(TObject *Sender)
 	if (ScrBarStyleComboBox->ItemIndex==4) {
 		UserModule->OpenImgDlg->Title = "ノブ画像の指定";
 		UserModule->SetOpenImgFilter(KnobImgEdit->Text);
-		UserModule->OpenImgDlg->InitialDir = rel_to_absdir(ExtractFilePath(KnobImgEdit->Text));
+		UserModule->OpenImgDlg->InitialDir = to_absolute_name(ExtractFilePath(KnobImgEdit->Text));
 		UserModule->OpenImgDlg->FileName   = EmptyStr;
 		if (!UserModule->OpenImgDlgToEdit(KnobImgEdit, true)) {
 			ScrBarStyleComboBox->ItemIndex = 0;
@@ -1625,6 +1625,7 @@ void __fastcall TOptionDlg::AddExtColActionExecute(TObject *Sender)
 		UnicodeString s;
 		s.sprintf(_T("0x%06x,%s"), (int)RefExtColPanel->Color, ExtColorEdit->Text.c_str());
 		ExtColListBox->Items->Add(s);
+		ExtColListBox->ItemIndex = ExtColListBox->Count - 1;
 	}
 }
 //---------------------------------------------------------------------------
@@ -1868,7 +1869,7 @@ void __fastcall TOptionDlg::RefSusieDirBtnClick(TObject *Sender)
 	if (UserModule->SelectDirEx(_T("Susie プラグイン"), dnam, true)) {
 		SusieDirEdit->Text = dnam;
 		delete SPI;
-		SPI = new SpiUnit(rel_to_absdir(SusieDirEdit->Text));
+		SPI = new SpiUnit(to_absolute_name(SusieDirEdit->Text));
 		UpdateSpiListBox();
 	}
 }
@@ -2357,7 +2358,7 @@ void __fastcall TOptionDlg::RefCmdsBtnClick(TObject *Sender)
 void __fastcall TOptionDlg::RefMenuIconBtnClick(TObject *Sender)
 {
 	UserModule->PrepareOpenDlg(_T("アイコンの指定"), F_FILTER_ICO, NULL, IconFilePath);
-	if (UserModule->OpenDlgToEdit(MenuIconEdit, true)) IconFilePath = ExtractFilePath(rel_to_absdir(MenuIconEdit->Text));
+	if (UserModule->OpenDlgToEdit(MenuIconEdit, true)) IconFilePath = ExtractFilePath(to_absolute_name(MenuIconEdit->Text));
 }
 
 //---------------------------------------------------------------------------
@@ -2636,7 +2637,7 @@ void __fastcall TOptionDlg::OptMenuListBoxDrawItem(TWinControl *Control, int Ind
 	//項目
 	else {
 		//アイコン
-		usr_SH->draw_SmallIcon(rel_to_absdir(cv_env_str(itm_buf[is_tool? 1 : 5])), cv, Rect.Left + 2, yp);
+		usr_SH->draw_SmallIcon(to_absolute_name(cv_env_str(itm_buf[is_tool? 1 : 5])), cv, Rect.Left + 2, yp);
 		//キャプション
 		UnicodeString lbuf = minimize_str(itm_buf[0], cv, sp->Items[0]->Width - xp, true);
 		cv->TextOut(xp, yp, lbuf);
@@ -4003,7 +4004,7 @@ void __fastcall TOptionDlg::OkActionExecute(TObject *Sender)
 	if (!SameText(MigemoPath, MigemoDirEdit->Text)) {
 		MigemoPath = to_path_name(MigemoDirEdit->Text);
 		delete usr_Migemo;
-		usr_Migemo = new MigemoUnit(rel_to_absdir(MigemoPath));
+		usr_Migemo = new MigemoUnit(to_absolute_name(MigemoPath));
 		AddLog(tmp.sprintf(_T("  LOAD migemo.dll   %s"), usr_Migemo->DictReady? _T("OK") : _T("NONE")));
 	}
 	usr_Migemo->MinLength = IncSeaMigemoMin;
@@ -4012,7 +4013,7 @@ void __fastcall TOptionDlg::OkActionExecute(TObject *Sender)
 	if (!SameText(SpiDir, SusieDirEdit->Text)) {
 		SpiDir = to_path_name(SusieDirEdit->Text);
 		delete SPI;
-		SPI = new SpiUnit(rel_to_absdir(SpiDir));
+		SPI = new SpiUnit(to_absolute_name(SpiDir));
 		if (SPI->PlgList->Count>0) {
 			for (int i=0; i<SPI->PlgList->Count; i++) {
 				spi_info *sp = SPI->PlgList->Items[i];
