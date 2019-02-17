@@ -79,6 +79,7 @@ USEFORM("FuncDlg.cpp", FuncListDlg);
 USEFORM("FindDlg.cpp", FindFileDlg);
 USEFORM("FindKey.cpp", FindKeyDlg);
 USEFORM("FindTag.cpp", FindTagForm);
+USEFORM("GitView.cpp", GitViewer);
 //---------------------------------------------------------------------------
 #include "Global.h"
 #include "Splash.h"
