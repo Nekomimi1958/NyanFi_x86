@@ -870,9 +870,9 @@ void __fastcall TCalculator::HistComboBoxKeyDown(TObject *Sender, WORD &Key, TSh
 	bool handled = true;
 	if (equal_ENTER(KeyStr))
 		CalcLine(Trim(get_tkn(HistComboBox->Text, '=')));
-	else if (USAME_TI(KeyStr, "UP") && !HistComboBox->DroppedDown)
+	else if (equal_UP(KeyStr) && !HistComboBox->DroppedDown)
 		LineEdit->SetFocus();
-	else if (USAME_TI(KeyStr, "DOWN") && !HistComboBox->DroppedDown)
+	else if (equal_DOWN(KeyStr) && !HistComboBox->DroppedDown)
 		HistComboBox->DroppedDown = true;
 	else if (USAME_TI(KeyStr, "BKSP")) {
 		UnicodeString lbuf = HistComboBox->Text;
