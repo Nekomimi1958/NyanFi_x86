@@ -5,7 +5,6 @@
 #include <vcl.h>
 #pragma hdrstop
 #include <memory>
-#include <math.h>
 #include <System.StrUtils.hpp>
 #include <RegularExpressions.hpp>
 #include <Vcl.Clipbrd.hpp>
@@ -244,9 +243,13 @@ long double __fastcall TCalculator::EvalNumStr(UnicodeString s)
 			bool is_fct = remove_end_s(s, '!');
 			wchar_t *topptr = s.c_str();
 			wchar_t *endptr;
+#if defined(_WIN64)
+			v = wcstold(topptr, &endptr);
+#else
 			v = _wcstold(topptr, &endptr);
+#endif
 			if ((topptr += s.Length()) != endptr) Abort();
-			if (v==_LHUGE_VAL) Abort();
+			if (is_IllegalVal(v)) Abort();
 
 			//階乗
 			if (is_fct) {
@@ -326,7 +329,7 @@ long double __fastcall TCalculator::EvalFunc(UnicodeString s)
 			if (!handled) {
 				ErrMsg = "不明な関数";  Abort();
 			}
-			else if (ans==_LHUGE_VAL || IsInfinite(ans) || IsNan(ans)) {
+			else if (is_IllegalVal(ans)) {
 				ErrMsg = "異常値またはオーバーフロー";  Abort();
 			}
 		}
@@ -436,7 +439,7 @@ void __fastcall TCalculator::EvalOpeItem(
 			}
 		}
 
-		if (ans==_LHUGE_VAL || IsInfinite(ans) || IsNan(ans)) {
+		if (is_IllegalVal(ans)) {
 			ErrMsg = "異常値またはオーバーフロー";  Abort();
 		}
 

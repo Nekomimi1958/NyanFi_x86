@@ -47,7 +47,7 @@ __published:	// IDE で管理されるコンポーネント
 	TAction *ChgMenuAction;
 	TAction *ChgStdCmdAction;
 	TAction *ChgToolAction;
-	TAction *ConfigSpiAction;
+	TAction *ConfigSpiAction;				//<<<<<<<X86_SPI
 	TAction *DefTagColAction;
 	TAction *DelKeyAction;
 	TAction *DisableColAction;
@@ -145,12 +145,12 @@ __published:	// IDE で管理されるコンポーネント
 	TButton *RefSpImg2Btn;
 	TButton *RefSpImgBtn;
 	TButton *RefStdCmdPrmBtn;
-	TButton *RefSusieDirBtn;
+	TButton *RefSusieDirBtn;				//<<<<<<<X86_SPI
 	TButton *RefTagColBtn;
 	TButton *RefTimColBtn;
 	TButton *RefTmpDirBtn;
 	TButton *RefTxtEditBtn;
-	TButton *SpiConfigBtn;
+	TButton *SpiConfigBtn;					//<<<<<<<X86_SPI
 	TButton *TestSndFindFinBtn;
 	TButton *TestSndTaskFinBtn;
 	TButton *TestSndWatchBtn;
@@ -363,7 +363,7 @@ __published:	// IDE で管理されるコンポーネント
 	TCheckBox *UncToNetDriveCheckBox;
 	TCheckBox *UnRegCmdCheckBox;
 	TCheckBox *UseIndIconCheckBox;
-	TCheckBox *UseSpiFirstCheckBox;
+	TCheckBox *UseSpiFirstCheckBox;				//<<<<<<<X86_SPI
 	TCheckBox *UseXd2txCheckBox;
 	TCheckBox *ViewArcInfCheckBox;
 	TCheckBox *WarnDisconCheckBox;
@@ -495,7 +495,7 @@ __published:	// IDE で管理されるコンポーネント
 	TGroupBox *SndTaskGroupBox;
 	TGroupBox *SndWarnGroupBox;
 	TGroupBox *SndWatchGroupBox;
-	TGroupBox *SpiGroupBox;
+	TGroupBox *SpiGroupBox;				//<<<<<<<X86_SPI
 	TGroupBox *SplitterGroupBox;
 	TGroupBox *SttBarGroupBox;
 	TGroupBox *SureMsgGroupBox;
@@ -627,7 +627,7 @@ __published:	// IDE で管理されるコンポーネント
 	TLabeledEdit *SplitWidth2Edit;
 	TLabeledEdit *SplitWidthEdit;
 	TLabeledEdit *StdCmdPrmEdit;
-	TLabeledEdit *SusieDirEdit;
+	TLabeledEdit *SusieDirEdit;					//<<<<<<<X86_SPI
 	TLabeledEdit *TabWidthEdit;
 	TLabeledEdit *TabXWdEdit;
 	TLabeledEdit *TempDirEdit;
@@ -657,7 +657,7 @@ __published:	// IDE で管理されるコンポーネント
 	TListBox *KeyListBox;
 	TListBox *OptColListBox;
 	TListBox *PrtDirListBox;
-	TListBox *SpiListBox;
+	TListBox *SpiListBox;				//<<<<<<<X86_SPI
 	TListBox *StdCmdListBox;
 	TListBox *TagColListBox;
 	TListBox *TimColListBox;
@@ -772,7 +772,7 @@ __published:	// IDE で管理されるコンポーネント
 	void __fastcall R_IniPatMod1RadioBtnClick(TObject *Sender);
 	void __fastcall LayoutChange(TObject *Sender);
 	void __fastcall UnRegCmdCheckBoxClick(TObject *Sender);
-	void __fastcall RefSusieDirBtnClick(TObject *Sender);
+	void __fastcall RefSusieDirBtnClick(TObject *Sender);					//<<<<<<<X86_SPI
 	void __fastcall ExpKeyBtnClick(TObject *Sender);
 	void __fastcall InpKeyBtnClick(TObject *Sender);
 	void __fastcall EtcEditorListBoxClick(TObject *Sender);
@@ -783,8 +783,8 @@ __published:	// IDE で管理されるコンポーネント
 	void __fastcall EtcEditorListBoxDrawItem(TWinControl *Control, int Index, TRect &Rect, TOwnerDrawState State);
 	void __fastcall InpColBtnClick(TObject *Sender);
 	void __fastcall ExpColBtnClick(TObject *Sender);
-	void __fastcall ConfigSpiActionExecute(TObject *Sender);
-	void __fastcall ConfigSpiActionUpdate(TObject *Sender);
+	void __fastcall ConfigSpiActionExecute(TObject *Sender);				//<<<<<<<X86_SPI
+	void __fastcall ConfigSpiActionUpdate(TObject *Sender);					//<<<<<<<X86_SPI
 	void __fastcall RefDirBtnClick(TObject *Sender);
 	void __fastcall RefHomeWorkBtnClick(TObject *Sender);
 	void __fastcall CmdComboBoxChange(TObject *Sender);
@@ -918,7 +918,7 @@ private:	// ユーザー宣言
 	bool __fastcall MatchKeyItem(int idx);
 	void __fastcall SetCmdCombo(UnicodeString kwd = EmptyStr);
 	void __fastcall SortAssoListBox(UnicodeString item);
-	void __fastcall UpdateSpiListBox();
+	void __fastcall UpdateSpiListBox();						//<<<<<<<X86_SPI
 	TCustomListBox * __fastcall GetCurListBox();
 
 	void __fastcall UpdateAlias(UnicodeString o_name, UnicodeString n_name);

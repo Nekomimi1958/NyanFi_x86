@@ -689,7 +689,7 @@ void __fastcall TOptionDlg::FormCreate(TObject *Sender)
 	AnimateGifCheckBox->Tag 	= (int)&AnimateGif;
 	ThumbScrCheckBox->Tag		= (int)&ShowThumbScroll;
 	MarkImgCheckBox->Tag		= (int)&MarkImgClose;
-	UseSpiFirstCheckBox->Tag	= (int)&UseSpiFirst;
+	UseSpiFirstCheckBox->Tag	= (int)&UseSpiFirst;		//<<<<<<<X86_SPI
 	SureCopyCheckBox->Tag		= (int)&SureCopy;
 	SureMoveCheckBox->Tag		= (int)&SureMove;
 	SureDeleteCheckBox->Tag 	= (int)&SureDelete;
@@ -818,7 +818,7 @@ void __fastcall TOptionDlg::FormShow(TObject *Sender)
 
 	set_ListBoxItemHi(ExtColListBox);
 	set_ListBoxItemHi(TagColListBox);
-	set_ListBoxItemHi(SpiListBox);
+	set_ListBoxItemHi(SpiListBox);				//<<<<<<<X86_SPI
 	set_ListBoxItemHi(EtcEditorListBox);
 	set_ListBoxItemHi(AssociateListBox);
 	set_ListBoxItemHi(ExtMenuListBox);
@@ -859,7 +859,7 @@ void __fastcall TOptionDlg::FormShow(TObject *Sender)
 	//タグを用いない設定
 	TempDirEdit->Text	= TempPath;
 	MigemoDirEdit->Text	= MigemoPath;
-	SusieDirEdit->Text	= SpiDir;
+	SusieDirEdit->Text	= SpiDir;						//<<<<<<<X86_SPI
 	LimitTxtEdit->Text	= ViewTxtLimitSize/1024;
 	LimitBinEdit->Text	= ViewBinLimitSize/1048576;
 	MaxTasksComboBox->ItemIndex = MaxTasks - 1;
@@ -968,7 +968,7 @@ void __fastcall TOptionDlg::FormShow(TObject *Sender)
 	IniSeaCtrlCheckBox->Checked   = ContainsText(IniSeaShift, KeyStr_Ctrl);
 	IniSeaAltCheckBox->Checked	  = ContainsText(IniSeaShift, KeyStr_Alt);
 
-	UpdateSpiListBox();
+	UpdateSpiListBox();				//<<<<<<<X86_SPI
 
 	//イベント
 	EventListBox->Clear();
@@ -1868,54 +1868,55 @@ void __fastcall TOptionDlg::OptListBoxKeyDown(TObject *Sender, WORD &Key, TShift
 	Key = 0;
 }
 
-//---------------------------------------------------------------------------
-//Susie プラグインのディレクトリを参照
-//---------------------------------------------------------------------------
-void __fastcall TOptionDlg::RefSusieDirBtnClick(TObject *Sender)
-{
-	UnicodeString dnam = ExePath;
-	if (UserModule->SelectDirEx(_T("Susie プラグイン"), dnam, true)) {
-		SusieDirEdit->Text = dnam;
-		delete SPI;
-		SPI = new SpiUnit(to_absolute_name(SusieDirEdit->Text));
-		UpdateSpiListBox();
-	}
-}
-//---------------------------------------------------------------------------
-//Suisie プラグイン一覧を更新
-//---------------------------------------------------------------------------
-void __fastcall TOptionDlg::UpdateSpiListBox()
-{
-	SpiListBox->Clear();
-	for (int i=0; i<SPI->PlgList->Count; i++) {
-		spi_info *sp = SPI->PlgList->Items[i];
-		SpiListBox->Items->Add(
-			UnicodeString().sprintf(_T("%s \t[%s] %s"),
-				ExtractFileName(sp->FileName).c_str(), sp->VerType.c_str(), sp->FileType.c_str()));
-	}
-}
-//---------------------------------------------------------------------------
-//Sunis プラグインの設定
-//---------------------------------------------------------------------------
-void __fastcall TOptionDlg::ConfigSpiActionExecute(TObject *Sender)
-{
-	int idx = SpiListBox->ItemIndex;
-	if (idx!=-1) {
-		spi_info *sp = SPI->PlgList->Items[idx];
-		if (sp->ConfigurationDlg) sp->ConfigurationDlg(this->Handle, 1);
-	}
-}
-//---------------------------------------------------------------------------
-void __fastcall TOptionDlg::ConfigSpiActionUpdate(TObject *Sender)
-{
-	int idx = SpiListBox->ItemIndex;
-	if (idx!=-1) {
-		spi_info *sp = SPI->PlgList->Items[idx];
-		((TAction*)Sender)->Enabled = (sp->ConfigurationDlg!=NULL);
-	}
-	else
-		((TAction*)Sender)->Enabled = false;
-}
+//---------------------------------------------------------------------------	//<<<<<<<X86_SPI
+//Susie プラグインのディレクトリを参照											//<<<<<<<X86_SPI
+//---------------------------------------------------------------------------	//<<<<<<<X86_SPI
+void __fastcall TOptionDlg::RefSusieDirBtnClick(TObject *Sender)				//<<<<<<<X86_SPI
+{                                                                               //<<<<<<<X86_SPI
+	UnicodeString dnam = ExePath;                                               //<<<<<<<X86_SPI
+	if (UserModule->SelectDirEx(_T("Susie プラグイン"), dnam, true)) {          //<<<<<<<X86_SPI
+		SusieDirEdit->Text = dnam;                                              //<<<<<<<X86_SPI
+		delete SPI;                                                             //<<<<<<<X86_SPI
+		SPI = new SpiUnit(to_absolute_name(SusieDirEdit->Text));                //<<<<<<<X86_SPI
+		UpdateSpiListBox();                                                     //<<<<<<<X86_SPI
+	}                                                                           //<<<<<<<X86_SPI
+}                                                                               //<<<<<<<X86_SPI
+//---------------------------------------------------------------------------   //<<<<<<<X86_SPI
+//Suisie プラグイン一覧を更新                                                   //<<<<<<<X86_SPI
+//---------------------------------------------------------------------------   //<<<<<<<X86_SPI
+void __fastcall TOptionDlg::UpdateSpiListBox()                                  //<<<<<<<X86_SPI
+{                                                                               //<<<<<<<X86_SPI
+	SpiListBox->Clear();                                                        //<<<<<<<X86_SPI
+	for (int i=0; i<SPI->PlgList->Count; i++) {                                 //<<<<<<<X86_SPI
+		spi_info *sp = SPI->PlgList->Items[i];                                  //<<<<<<<X86_SPI
+		SpiListBox->Items->Add(                                                 //<<<<<<<X86_SPI
+			UnicodeString().sprintf(_T("%s \t[%s] %s"),                         //<<<<<<<X86_SPI
+				ExtractFileName(sp->FileName).c_str(),                          //<<<<<<<X86_SPI
+					sp->VerType.c_str(), sp->FileType.c_str()));                //<<<<<<<X86_SPI
+	}                                                                           //<<<<<<<X86_SPI
+}                                                                               //<<<<<<<X86_SPI
+//---------------------------------------------------------------------------   //<<<<<<<X86_SPI
+//Sunis プラグインの設定                                                        //<<<<<<<X86_SPI
+//---------------------------------------------------------------------------   //<<<<<<<X86_SPI
+void __fastcall TOptionDlg::ConfigSpiActionExecute(TObject *Sender)             //<<<<<<<X86_SPI
+{                                                                               //<<<<<<<X86_SPI
+	int idx = SpiListBox->ItemIndex;                                            //<<<<<<<X86_SPI
+	if (idx!=-1) {                                                              //<<<<<<<X86_SPI
+		spi_info *sp = SPI->PlgList->Items[idx];                                //<<<<<<<X86_SPI
+		if (sp->ConfigurationDlg) sp->ConfigurationDlg(this->Handle, 1);        //<<<<<<<X86_SPI
+	}                                                                           //<<<<<<<X86_SPI
+}                                                                               //<<<<<<<X86_SPI
+//---------------------------------------------------------------------------   //<<<<<<<X86_SPI
+void __fastcall TOptionDlg::ConfigSpiActionUpdate(TObject *Sender)              //<<<<<<<X86_SPI
+{                                                                               //<<<<<<<X86_SPI
+	int idx = SpiListBox->ItemIndex;                                            //<<<<<<<X86_SPI
+	if (idx!=-1) {                                                              //<<<<<<<X86_SPI
+		spi_info *sp = SPI->PlgList->Items[idx];                                //<<<<<<<X86_SPI
+		((TAction*)Sender)->Enabled = (sp->ConfigurationDlg!=NULL);             //<<<<<<<X86_SPI
+	}                                                                           //<<<<<<<X86_SPI
+	else                                                                        //<<<<<<<X86_SPI
+		((TAction*)Sender)->Enabled = false;                                    //<<<<<<<X86_SPI
+}																				//<<<<<<<X86_SPI
 
 //---------------------------------------------------------------------------
 //その他のエディタの追加
@@ -2581,21 +2582,21 @@ void __fastcall TOptionDlg::OptListBoxDrawItem(TWinControl *Control, int Index,
 	UnicodeString lbuf = lp->Items->Strings[Index];
 	bool brk = false;
 
-	//SPI
-	if (lp==SpiListBox) {
-		int w_x = 0;
-		for (int i=0; i<lp->Count; i++)
-			w_x = std::max(cv->TextWidth(get_pre_tab(lp->Items->Strings[i])), w_x);
-		cv->TextOut(xp, yp, split_pre_tab(lbuf));
-		cv->TextOut(xp + w_x + 20, yp, lbuf);
-		if (Index>0) {
-			UnicodeString vt   = lbuf.SubString(1, 4);
-			UnicodeString u_vt = get_post_tab(lp->Items->Strings[Index - 1]).SubString(1, 4);
-			brk = !SameText(vt, u_vt);
-		}
-	}
-	//イベント
-	else if (lp==EventListBox) {
+	//SPI																						//<<<<<<<X86_SPI
+	if (lp==SpiListBox) {																		//<<<<<<<X86_SPI
+		int w_x = 0;																			//<<<<<<<X86_SPI
+		for (int i=0; i<lp->Count; i++)															//<<<<<<<X86_SPI
+			w_x = std::max(cv->TextWidth(get_pre_tab(lp->Items->Strings[i])), w_x);				//<<<<<<<X86_SPI
+		cv->TextOut(xp, yp, split_pre_tab(lbuf));												//<<<<<<<X86_SPI
+		cv->TextOut(xp + w_x + 20, yp, lbuf);													//<<<<<<<X86_SPI
+		if (Index>0) {																			//<<<<<<<X86_SPI
+			UnicodeString vt   = lbuf.SubString(1, 4);											//<<<<<<<X86_SPI
+			UnicodeString u_vt = get_post_tab(lp->Items->Strings[Index - 1]).SubString(1, 4);	//<<<<<<<X86_SPI
+			brk = !SameText(vt, u_vt);															//<<<<<<<X86_SPI
+		}																						//<<<<<<<X86_SPI
+	}																							//<<<<<<<X86_SPI
+	//イベント																					//<<<<<<<X86_SPI
+	else if (lp==EventListBox) { 																//<<<<<<<X86_SPI
 		UnicodeString tmp = split_pre_tab(lbuf);
 		brk = remove_top_s(tmp, '|');
 		cv->TextOut(xp, yp, tmp);
@@ -4017,18 +4018,19 @@ void __fastcall TOptionDlg::OkActionExecute(TObject *Sender)
 	}
 	usr_Migemo->MinLength = IncSeaMigemoMin;
 
-	//Susie プラグインの再初期化
-	if (!SameText(SpiDir, SusieDirEdit->Text)) {
-		SpiDir = to_path_name(SusieDirEdit->Text);
-		delete SPI;
-		SPI = new SpiUnit(to_absolute_name(SpiDir));
-		if (SPI->PlgList->Count>0) {
-			for (int i=0; i<SPI->PlgList->Count; i++) {
-				spi_info *sp = SPI->PlgList->Items[i];
-				AddLog(tmp.sprintf(_T("  LOAD %-12s %s"), ExtractFileName(sp->FileName).c_str(), sp->FileType.c_str()));
-			}
-		}
-	}
+	//Susie プラグインの再初期化														//<<<<<<<X86_SPI
+	if (!SameText(SpiDir, SusieDirEdit->Text)) {										//<<<<<<<X86_SPI
+		SpiDir = to_path_name(SusieDirEdit->Text);										//<<<<<<<X86_SPI
+		delete SPI;																		//<<<<<<<X86_SPI
+		SPI = new SpiUnit(to_absolute_name(SpiDir));									//<<<<<<<X86_SPI
+		if (SPI->PlgList->Count>0) {													//<<<<<<<X86_SPI
+			for (int i=0; i<SPI->PlgList->Count; i++) {									//<<<<<<<X86_SPI
+				spi_info *sp = SPI->PlgList->Items[i];									//<<<<<<<X86_SPI
+				AddLog(tmp.sprintf(_T("  LOAD %-12s %s"),								//<<<<<<<X86_SPI
+					ExtractFileName(sp->FileName).c_str(), sp->FileType.c_str()));		//<<<<<<<X86_SPI
+			}																			//<<<<<<<X86_SPI
+		}																			 	//<<<<<<<X86_SPI
+	}																					//<<<<<<<X86_SPI
 
 	//7z.dll対応拡張子
 	usr_ARC->FExt7zDll = FExt7zDll;
