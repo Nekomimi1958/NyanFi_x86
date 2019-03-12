@@ -1872,50 +1872,50 @@ void __fastcall TOptionDlg::OptListBoxKeyDown(TObject *Sender, WORD &Key, TShift
 //Susie プラグインのディレクトリを参照											//<<<<<<<X86_SPI
 //---------------------------------------------------------------------------	//<<<<<<<X86_SPI
 void __fastcall TOptionDlg::RefSusieDirBtnClick(TObject *Sender)				//<<<<<<<X86_SPI
-{                                                                               //<<<<<<<X86_SPI
-	UnicodeString dnam = ExePath;                                               //<<<<<<<X86_SPI
-	if (UserModule->SelectDirEx(_T("Susie プラグイン"), dnam, true)) {          //<<<<<<<X86_SPI
-		SusieDirEdit->Text = dnam;                                              //<<<<<<<X86_SPI
-		delete SPI;                                                             //<<<<<<<X86_SPI
-		SPI = new SpiUnit(to_absolute_name(SusieDirEdit->Text));                //<<<<<<<X86_SPI
-		UpdateSpiListBox();                                                     //<<<<<<<X86_SPI
-	}                                                                           //<<<<<<<X86_SPI
-}                                                                               //<<<<<<<X86_SPI
-//---------------------------------------------------------------------------   //<<<<<<<X86_SPI
-//Suisie プラグイン一覧を更新                                                   //<<<<<<<X86_SPI
-//---------------------------------------------------------------------------   //<<<<<<<X86_SPI
-void __fastcall TOptionDlg::UpdateSpiListBox()                                  //<<<<<<<X86_SPI
-{                                                                               //<<<<<<<X86_SPI
-	SpiListBox->Clear();                                                        //<<<<<<<X86_SPI
-	for (int i=0; i<SPI->PlgList->Count; i++) {                                 //<<<<<<<X86_SPI
-		spi_info *sp = SPI->PlgList->Items[i];                                  //<<<<<<<X86_SPI
-		SpiListBox->Items->Add(                                                 //<<<<<<<X86_SPI
-			UnicodeString().sprintf(_T("%s \t[%s] %s"),                         //<<<<<<<X86_SPI
-				ExtractFileName(sp->FileName).c_str(),                          //<<<<<<<X86_SPI
-					sp->VerType.c_str(), sp->FileType.c_str()));                //<<<<<<<X86_SPI
-	}                                                                           //<<<<<<<X86_SPI
-}                                                                               //<<<<<<<X86_SPI
-//---------------------------------------------------------------------------   //<<<<<<<X86_SPI
-//Sunis プラグインの設定                                                        //<<<<<<<X86_SPI
-//---------------------------------------------------------------------------   //<<<<<<<X86_SPI
-void __fastcall TOptionDlg::ConfigSpiActionExecute(TObject *Sender)             //<<<<<<<X86_SPI
-{                                                                               //<<<<<<<X86_SPI
-	int idx = SpiListBox->ItemIndex;                                            //<<<<<<<X86_SPI
-	if (idx!=-1) {                                                              //<<<<<<<X86_SPI
-		spi_info *sp = SPI->PlgList->Items[idx];                                //<<<<<<<X86_SPI
-		if (sp->ConfigurationDlg) sp->ConfigurationDlg(this->Handle, 1);        //<<<<<<<X86_SPI
-	}                                                                           //<<<<<<<X86_SPI
-}                                                                               //<<<<<<<X86_SPI
-//---------------------------------------------------------------------------   //<<<<<<<X86_SPI
-void __fastcall TOptionDlg::ConfigSpiActionUpdate(TObject *Sender)              //<<<<<<<X86_SPI
-{                                                                               //<<<<<<<X86_SPI
-	int idx = SpiListBox->ItemIndex;                                            //<<<<<<<X86_SPI
-	if (idx!=-1) {                                                              //<<<<<<<X86_SPI
-		spi_info *sp = SPI->PlgList->Items[idx];                                //<<<<<<<X86_SPI
-		((TAction*)Sender)->Enabled = (sp->ConfigurationDlg!=NULL);             //<<<<<<<X86_SPI
-	}                                                                           //<<<<<<<X86_SPI
-	else                                                                        //<<<<<<<X86_SPI
-		((TAction*)Sender)->Enabled = false;                                    //<<<<<<<X86_SPI
+{																				//<<<<<<<X86_SPI
+	UnicodeString dnam = ExePath;												//<<<<<<<X86_SPI
+	if (UserModule->SelectDirEx(_T("Susie プラグイン"), dnam, true)) {			//<<<<<<<X86_SPI
+		SusieDirEdit->Text = dnam;												//<<<<<<<X86_SPI
+		delete SPI;																//<<<<<<<X86_SPI
+		SPI = new SpiUnit(to_absolute_name(SusieDirEdit->Text));				//<<<<<<<X86_SPI
+		UpdateSpiListBox();														//<<<<<<<X86_SPI
+	}																			//<<<<<<<X86_SPI
+}																				//<<<<<<<X86_SPI
+//---------------------------------------------------------------------------	//<<<<<<<X86_SPI
+//Suisie プラグイン一覧を更新													//<<<<<<<X86_SPI
+//---------------------------------------------------------------------------	//<<<<<<<X86_SPI
+void __fastcall TOptionDlg::UpdateSpiListBox()									//<<<<<<<X86_SPI
+{																				//<<<<<<<X86_SPI
+	SpiListBox->Clear();														//<<<<<<<X86_SPI
+	for (int i=0; i<SPI->PlgList->Count; i++) {									//<<<<<<<X86_SPI
+		spi_info *sp = SPI->PlgList->Items[i];									//<<<<<<<X86_SPI
+		SpiListBox->Items->Add(													//<<<<<<<X86_SPI
+			UnicodeString().sprintf(_T("%s \t[%s] %s"),							//<<<<<<<X86_SPI
+				ExtractFileName(sp->FileName).c_str(),							//<<<<<<<X86_SPI
+					sp->VerType.c_str(), sp->FileType.c_str()));				//<<<<<<<X86_SPI
+	}																			//<<<<<<<X86_SPI
+}																				//<<<<<<<X86_SPI
+//---------------------------------------------------------------------------	//<<<<<<<X86_SPI
+//Sunis プラグインの設定														//<<<<<<<X86_SPI
+//---------------------------------------------------------------------------	//<<<<<<<X86_SPI
+void __fastcall TOptionDlg::ConfigSpiActionExecute(TObject *Sender)				//<<<<<<<X86_SPI
+{																			 	//<<<<<<<X86_SPI
+	int idx = SpiListBox->ItemIndex;											//<<<<<<<X86_SPI
+	if (idx!=-1) {																//<<<<<<<X86_SPI
+		spi_info *sp = SPI->PlgList->Items[idx];								//<<<<<<<X86_SPI
+		if (sp->ConfigurationDlg) sp->ConfigurationDlg(this->Handle, 1);		//<<<<<<<X86_SPI
+	}																			//<<<<<<<X86_SPI
+}																				//<<<<<<<X86_SPI
+//---------------------------------------------------------------------------	//<<<<<<<X86_SPI
+void __fastcall TOptionDlg::ConfigSpiActionUpdate(TObject *Sender)				//<<<<<<<X86_SPI
+{																				//<<<<<<<X86_SPI
+	int idx = SpiListBox->ItemIndex;											//<<<<<<<X86_SPI
+	if (idx!=-1) {																//<<<<<<<X86_SPI
+		spi_info *sp = SPI->PlgList->Items[idx];								//<<<<<<<X86_SPI
+		((TAction*)Sender)->Enabled = (sp->ConfigurationDlg!=NULL);				//<<<<<<<X86_SPI
+	}																			//<<<<<<<X86_SPI
+	else																		//<<<<<<<X86_SPI
+		((TAction*)Sender)->Enabled = false;									//<<<<<<<X86_SPI
 }																				//<<<<<<<X86_SPI
 
 //---------------------------------------------------------------------------
@@ -2667,13 +2667,13 @@ void __fastcall TOptionDlg::OptMenuListBoxDrawItem(TWinControl *Control, int Ind
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionDlg::ExtMenuHeaderSectionResize(THeaderControl *HeaderControl,
-          THeaderSection *Section)
+	THeaderSection *Section)
 {
 	ExtMenuListBox->Repaint();
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionDlg::ExtToolHeaderSectionResize(THeaderControl *HeaderControl,
-          THeaderSection *Section)
+	THeaderSection *Section)
 {
 	ExtToolListBox->Repaint();
 }
@@ -2682,7 +2682,7 @@ void __fastcall TOptionDlg::ExtToolHeaderSectionResize(THeaderControl *HeaderCon
 //キー設定
 //---------------------------------------------------------------------------
 void __fastcall TOptionDlg::KeyTabControlDrawTab(TCustomTabControl *Control, int TabIndex,
-		const TRect &Rect, bool Active)
+	const TRect &Rect, bool Active)
 {
 	//※テーマ利用時に下部タブが正しく描画されない不具合の対策
 	draw_BottomTab(Control, TabIndex, Rect, Active);
