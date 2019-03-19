@@ -5453,7 +5453,6 @@ object OptionDlg: TOptionDlg
           EditLabel.Height = 13
           EditLabel.Caption = #24038
           LabelPosition = lpLeft
-          NumbersOnly = True
           TabOrder = 2
           OnChange = IniWinSizeChange
         end
@@ -5467,7 +5466,6 @@ object OptionDlg: TOptionDlg
           EditLabel.Height = 13
           EditLabel.Caption = #19978
           LabelPosition = lpLeft
-          NumbersOnly = True
           TabOrder = 3
           OnChange = IniWinSizeChange
         end
