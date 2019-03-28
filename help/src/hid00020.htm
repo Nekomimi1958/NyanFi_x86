@@ -25,6 +25,11 @@
 
 <p><a href="hid00007.htm">イメージビュアー</a>に関する設定を行います。</p>
 
+<p class="link_box">
+<a href="#InitialStt">開いた時の初期状態</a> ／ <a href="#Thumbnail">サムネイル</a> ／ <a href="#SetMark">閉じた時に栞マークを設定</a> ／ <a href="#Susie">Susie プラグイン</a>
+</p>
+<br>
+
 <dl>
 <dt class="no_bg_indent1">縮小・拡大アルゴリズム <img src="combobox.png" alt="" border=0>
 <dd>画像の縮小・拡大に用いる補間法を選択します。<br>
@@ -100,12 +105,12 @@
 場合によってはサブビュアー(<a href="hid00007.htm#SubViewer">→ SubViewer</a>)で再生した方がよいでしょう。<br>
 <br><br>
 
-<dt><img src="grpbox.png" alt="" border=0> 開いた時の初期状態
+<dt id="InitialStt"><img src="grpbox.png" alt="" border=0> 開いた時の初期状態
 <dd>
 イメージビュアーを開いた時の、画像表示の初期状態を設定します。<br>
 <br><br>
 
-<dt><img src="grpbox.png" alt="" border=0> サムネイル
+<dt id="Thumbnail"><img src="grpbox.png" alt="" border=0> サムネイル
 <dd>
 <dt class="no_bg_indent1">サイズ <img src="edit.png" alt="" border=0>
 <dd>サムネイルの大きさをピクセル単位で指定します。<br>
@@ -138,7 +143,7 @@
 <dd>アーカイブ内の場合、サムネイルを一括取得しません。画像を表示させるごとに、そのサムネイルを追加表示していきます。<br>
 <br><br>
 
-<dt><img src="grpbox.png" alt="" border=0> 閉じた時に栞マークを設定
+<dt id="SetMark"><img src="grpbox.png" alt="" border=0> 閉じた時に栞マークを設定
 <dd>
 <img src="chkbox.png" alt="" border=0> <b>有効</b> をチェックしていると、イメージビュアーを閉じた時に、表示していた画像に栞マーク(<a href="hid00007.htm#Mark">Mark</a>)を設定します。この際、カレントの栞マークは一旦すべて解除(<a href="hid00007.htm#ClearMark">ClearMark</a>)されます。<br>
 <div class="spc_box">
@@ -161,7 +166,7 @@
 ここで指定したファイルは、<a href="hid00005.htm#ImageViewer">ImageViewer</a> コマンドで開けず、またサムネイルにもリストアップされません。<br>
 <br><br>
 
-<dt><img src="grpbox.png" alt="" border=0> Susie プラグイン
+<dt id="Susie"><img src="grpbox.png" alt="" border=0> Susie プラグイン
 <dd>
 画像表示に用いる <b>Susie</b> プラグインについての設定を行います。この設定はプレビューでも用いられます。<br>
 <b>Susie</b> を指定しない場合や、対応プラグインがない場合は、<b>WIC</b> コーデックが用いられます。<b>WIC</b> は標準で、<b>.JPG</b>、<b>.GIF</b>、<b>.PNG</b>、<b>.BMP</b>、<b>.TIF</b>、<b>.WDP</b>、<b>.HDP</b> に対応しています(<b>.PNG</b>、<b>.GIF</b> については独自に処理)。なおメタファイル(<b>.WMF</b>、<b>.EMF</b>)は、内部で対応しています。<br>
