@@ -1601,7 +1601,7 @@ void __fastcall TOptionDlg::ExtColListBoxDrawItem(TWinControl *Control, int Inde
 	UnicodeString lbuf = lp->Items->Strings[Index];
 	cv->Font->Color = (TColor)split_tkn(lbuf, ',').ToIntDef(clNone);
 	bool is_dot = USAME_TS(lbuf, ".");
-	UnicodeString ext = REPLACE_TS(lbuf, ".", " .");
+	UnicodeString ext = ReplaceStr(lbuf, ".", " .");
 	cv->Brush->Color = col_bgList;
 
 	UnicodeString smpl_str;

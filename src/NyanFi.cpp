@@ -7,80 +7,80 @@
 #include <memory>
 
 //---------------------------------------------------------------------------
-USEFORM("SameDlg.cpp", SameNameDlg);
-USEFORM("ShareDlg.cpp", NetShareDlg);
-USEFORM("RenDlg.cpp", RenameDlg);
-USEFORM("PackDlg.cpp", PackArcDlg);
-USEFORM("PrnImgDlg.cpp", PrintImgDlg);
-USEFORM("RegExChk.cpp", RegExChecker);
-USEFORM("TabDlg.cpp", TabSetDlg);
-USEFORM("TagDlg.cpp", TagManDlg);
-USEFORM("TaskDlg.cpp", TaskManDlg);
-USEFORM("SyncDlg.cpp", RegSyncDlg);
 USEFORM("Splash.cpp", SplashForm);
+USEFORM("ShareDlg.cpp", NetShareDlg);
+USEFORM("RegExChk.cpp", RegExChecker);
+USEFORM("RenDlg.cpp", RenameDlg);
+USEFORM("SameDlg.cpp", SameNameDlg);
+USEFORM("TaskDlg.cpp", TaskManDlg);
+USEFORM("TagDlg.cpp", TagManDlg);
 USEFORM("SrtModDlg.cpp", SortModeDlg);
-USEFORM("MainFrm.cpp", NyanFiForm);
+USEFORM("SyncDlg.cpp", RegSyncDlg);
+USEFORM("TabDlg.cpp", TabSetDlg);
 USEFORM("MaskDlg.cpp", PathMaskDlg);
-USEFORM("LoupeFrm.cpp", LoupeForm);
-USEFORM("InspectFrm.cpp", InspectForm);
-USEFORM("JoinDlg.cpp", JoinTextDlg);
-USEFORM("KeyDlg.cpp", KeyListDlg);
-USEFORM("OptDlg.cpp", OptionDlg);
-USEFORM("NewDlg.cpp", NewFileDlg);
 USEFORM("MaskSelDlg.cpp", MaskSelectDlg);
 USEFORM("MemoFrm.cpp", MemoForm);
+USEFORM("KeyDlg.cpp", KeyListDlg);
+USEFORM("LoupeFrm.cpp", LoupeForm);
+USEFORM("MainFrm.cpp", NyanFiForm);
+USEFORM("OptDlg.cpp", OptionDlg);
+USEFORM("PackDlg.cpp", PackArcDlg);
+USEFORM("PrnImgDlg.cpp", PrintImgDlg);
 USEFORM("ModalScr.cpp", ModalScrForm);
+USEFORM("NewDlg.cpp", NewFileDlg);
 USEFORM("XmlView.cpp", XmlViewer);
 USEFORM("UserMdl.cpp", UserModule); /* TDataModule: File Type */
-USEFORM("CvEncDlg.cpp", CvTxtEncDlg);
-USEFORM("CvImgDlg.cpp", CvImageDlg);
+USEFORM("JoinDlg.cpp", JoinTextDlg);
 USEFORM("DebugFrm.cpp", DebugForm);
-USEFORM("CsvRecFrm.cpp", CsvRecForm);
-USEFORM("ColPicker.cpp", ColorPicker);
-USEFORM("CompDlg.cpp", FileCompDlg);
-USEFORM("CreDirsDlg.cpp", CreateDirsDlg);
-USEFORM("DriveDlg.cpp", SelDriveDlg);
-USEFORM("DrvGraph.cpp", DriveGraph);
-USEFORM("DuplDlg.cpp", FindDuplDlg);
-USEFORM("DotDlg.cpp", DotNyanDlg);
 USEFORM("DiffDlg.cpp", DiffDirDlg);
 USEFORM("DirDlg.cpp", RegDirDlg);
-USEFORM("DistrDlg.cpp", DistributionDlg);
-USEFORM("AskRep.cpp", AskRepDlg);
-USEFORM("BakDlg.cpp", BackupDlg);
-USEFORM("BitmapFrm.cpp", BitmapForm);
-USEFORM("AppDlg.cpp", AppListDlg);
-USEFORM("About.cpp", AboutBox);
-USEFORM("ChmodDlg.cpp", FtpChmodDlg);
-USEFORM("CmdListDlg.cpp", CmdFileListDlg);
-USEFORM("ColDlg.cpp", ColorDlg);
-USEFORM("ChInfFrm.cpp", CharInfoForm);
-USEFORM("BtnDlg.cpp", ToolBtnDlg);
-USEFORM("CalcDlg.cpp", Calculator);
-USEFORM("GrepOptDlg.cpp", GrepExOptDlg);
-USEFORM("HistDlg.cpp", DirHistoryDlg);
-USEFORM("HistFrm.cpp", HistForm);
-USEFORM("GraphFrm.cpp", GraphForm);
-USEFORM("GifView.cpp", GifViewer);
-USEFORM("GitView.cpp", GitViewer);
-USEFORM("InpCmds.cpp", InpCmdsDlg);
-USEFORM("InpDir.cpp", InpDirDlg);
-USEFORM("InpExDlg.cpp", InputExDlg);
-USEFORM("ExTViewer.cpp", ExTxtViewer);
-USEFORM("FileExtDlg.cpp", FileExtensionDlg);
-USEFORM("FileInfDlg.cpp", FileInfoDlg);
-USEFORM("ExpCsv.cpp", ExpCsvDlg);
+USEFORM("CvImgDlg.cpp", CvImageDlg);
+USEFORM("CreDirsDlg.cpp", CreateDirsDlg);
+USEFORM("CsvRecFrm.cpp", CsvRecForm);
+USEFORM("CvEncDlg.cpp", CvTxtEncDlg);
+USEFORM("DuplDlg.cpp", FindDuplDlg);
 USEFORM("EditHistDlg.cpp", EditHistoryDlg);
 USEFORM("EditItem.cpp", EditItemDlg);
-USEFORM("ExeDlg.cpp", ExeCmdDlg);
-USEFORM("FtpDlg.cpp", FtpConnectDlg);
-USEFORM("FuncDlg.cpp", FuncListDlg);
-USEFORM("GenInfDlg.cpp", GeneralInfoDlg);
-USEFORM("FindTxtDlg.cpp", FindTextDlg);
+USEFORM("DrvGraph.cpp", DriveGraph);
+USEFORM("DistrDlg.cpp", DistributionDlg);
+USEFORM("DotDlg.cpp", DotNyanDlg);
+USEFORM("DriveDlg.cpp", SelDriveDlg);
+USEFORM("BitmapFrm.cpp", BitmapForm);
+USEFORM("BtnDlg.cpp", ToolBtnDlg);
+USEFORM("CalcDlg.cpp", Calculator);
+USEFORM("BakDlg.cpp", BackupDlg);
+USEFORM("About.cpp", AboutBox);
+USEFORM("AppDlg.cpp", AppListDlg);
+USEFORM("AskRep.cpp", AskRepDlg);
+USEFORM("ColDlg.cpp", ColorDlg);
+USEFORM("ColPicker.cpp", ColorPicker);
+USEFORM("CompDlg.cpp", FileCompDlg);
+USEFORM("CmdListDlg.cpp", CmdFileListDlg);
+USEFORM("ChInfFrm.cpp", CharInfoForm);
+USEFORM("ChmodDlg.cpp", FtpChmodDlg);
+USEFORM("HistDlg.cpp", DirHistoryDlg);
+USEFORM("HistFrm.cpp", HistForm);
+USEFORM("GrepOptDlg.cpp", GrepExOptDlg);
+USEFORM("GitView.cpp", GitViewer);
+USEFORM("GraphFrm.cpp", GraphForm);
+USEFORM("InpDir.cpp", InpDirDlg);
+USEFORM("InpExDlg.cpp", InputExDlg);
+USEFORM("InspectFrm.cpp", InspectForm);
+USEFORM("InpCmds.cpp", InpCmdsDlg);
+USEFORM("FileInfDlg.cpp", FileInfoDlg);
 USEFORM("FindDlg.cpp", FindFileDlg);
 USEFORM("FindKey.cpp", FindKeyDlg);
-USEFORM("FindTag.cpp", FindTagForm);
+USEFORM("FileExtDlg.cpp", FileExtensionDlg);
+USEFORM("ExeDlg.cpp", ExeCmdDlg);
+USEFORM("ExpCsv.cpp", ExpCsvDlg);
+USEFORM("ExTViewer.cpp", ExTxtViewer);
+USEFORM("GenInfDlg.cpp", GeneralInfoDlg);
+USEFORM("SubView.cpp", SubViewer);
 USEFORM("GitTag.cpp", SetGitTagDlg);
+USEFORM("FuncDlg.cpp", FuncListDlg);
+USEFORM("FindTag.cpp", FindTagForm);
+USEFORM("FindTxtDlg.cpp", FindTextDlg);
+USEFORM("FtpDlg.cpp", FtpConnectDlg);
 //---------------------------------------------------------------------------
 #include "Global.h"
 #include "Splash.h"
@@ -94,7 +94,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR lpCmdLine, int)
 
 	StartedCount = GetTickCount();
 
-	ExePath = REPLACE_TS(ExtractFilePath(Application->ExeName), "\\.\\", "\\");	//IDE実行時の対策
+	ExePath = ReplaceStr(ExtractFilePath(Application->ExeName), "\\.\\", "\\");	//IDE実行時の対策
 
 	//起動時オプションを取得
 	std::unique_ptr<TStringList> opt_lst(new TStringList());
@@ -202,7 +202,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR lpCmdLine, int)
 		Application->CreateForm(__classid(TFindTextDlg), &FindTextDlg);
 		Application->CreateForm(__classid(TFuncListDlg), &FuncListDlg);
 		Application->CreateForm(__classid(TGeneralInfoDlg), &GeneralInfoDlg);
-		Application->CreateForm(__classid(TGifViewer), &GifViewer);
+		Application->CreateForm(__classid(TSubViewer), &SubViewer);
 		Application->CreateForm(__classid(THistForm), &HistForm);
 		Application->CreateForm(__classid(TInpCmdsDlg), &InpCmdsDlg);
 		Application->CreateForm(__classid(TInputExDlg), &InputExDlg);
