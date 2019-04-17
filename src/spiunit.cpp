@@ -321,7 +321,9 @@ bool SpiUnit::UnPack(UnicodeString arc_file, UnicodeString fnam, UnicodeString d
 			for (int i=0; i<f_lst->Count; i++)
 				f_lst->Strings[i] = exclude_quot(f_lst->Strings[i]);
 		}
-		else f_lst->Add(fnam);
+		else {
+			f_lst->Add(fnam);
+		}
 
 		for (int i=0; i<f_lst->Count; i++) {
 			UnicodeString bnam = f_lst->Strings[i];
