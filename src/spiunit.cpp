@@ -336,7 +336,7 @@ bool SpiUnit::UnPack(UnicodeString arc_file, UnicodeString fnam, UnicodeString d
 		return true;
 	}
 	catch(...) {
-		ErrMsg.USET_T("“WŠJ‚ÉŽ¸”s‚µ‚Ü‚µ‚½");
+		ErrMsg = "“WŠJ‚ÉŽ¸”s‚µ‚Ü‚µ‚½";
 		return false;
 	}
 }
