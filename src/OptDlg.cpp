@@ -2140,11 +2140,13 @@ void __fastcall TOptionDlg::SetExtToolExeName(UnicodeString fnam)
 			ToolDirEdit->Text = fld;
 			ToolAliasEdit->Text = EmptyStr;
 		}
-		else
+		else {
 			msgbox_WARN("リンク先が .exe ファイルではありません");
+		}
 	}
-	else
+	else {
 		ToolExeEdit->Text = fnam;
+	}
 }
 //---------------------------------------------------------------------------
 //外部ツールの追加・変更
