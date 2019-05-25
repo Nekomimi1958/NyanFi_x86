@@ -623,7 +623,7 @@ object OptionDlg: TOptionDlg
     object General2Sheet: TTabSheet
       HelpContext = 24
       Caption = #19968#33324'2'
-      ImageIndex = 15
+      ImageIndex = -1
       object FileInfoGroupBox: TGroupBox
         Left = 10
         Top = 10
@@ -1197,7 +1197,7 @@ object OptionDlg: TOptionDlg
     object MouseSheet: TTabSheet
       HelpContext = 22
       Caption = #12510#12454#12473#25805#20316
-      ImageIndex = 13
+      ImageIndex = -1
       object MouseFlGroupBox: TGroupBox
         Left = 10
         Top = 10
@@ -2607,7 +2607,7 @@ object OptionDlg: TOptionDlg
     object FontColSheet: TTabSheet
       HelpContext = 23
       Caption = #12501#12457#12531#12488#12539#37197#33394
-      ImageIndex = 14
+      ImageIndex = -1
       object TLabel
         Left = 473
         Top = 551
@@ -3123,14 +3123,14 @@ object OptionDlg: TOptionDlg
       end
       object TLabel
         Left = 651
-        Top = 379
+        Top = 383
         Width = 12
         Height = 13
         Caption = 'KB'
       end
       object TLabel
         Left = 651
-        Top = 412
+        Top = 416
         Width = 14
         Height = 13
         Caption = 'MB'
@@ -3158,7 +3158,7 @@ object OptionDlg: TOptionDlg
       object AozoraCheckBox: TCheckBox
         Left = 684
         Top = 315
-        Width = 203
+        Width = 209
         Height = 17
         Caption = #38738#31354#25991#24235#24418#24335#12395#23550#24540#12377#12427
         TabOrder = 23
@@ -3324,7 +3324,7 @@ object OptionDlg: TOptionDlg
       end
       object LimitTxtEdit: TLabeledEdit
         Left = 589
-        Top = 376
+        Top = 380
         Width = 60
         Height = 21
         Alignment = taRightJustify
@@ -3333,7 +3333,7 @@ object OptionDlg: TOptionDlg
         EditLabel.Caption = #12486#12461#12473#12488#26368#22823#35501#36796#12469#12452#12474
         LabelPosition = lpLeft
         NumbersOnly = True
-        TabOrder = 25
+        TabOrder = 26
       end
       object ViewTab4Edit: TLabeledEdit
         Left = 16
@@ -3356,7 +3356,7 @@ object OptionDlg: TOptionDlg
       end
       object LimitBinEdit: TLabeledEdit
         Left = 589
-        Top = 409
+        Top = 413
         Width = 60
         Height = 21
         Alignment = taRightJustify
@@ -3365,7 +3365,7 @@ object OptionDlg: TOptionDlg
         EditLabel.Caption = #12496#12452#12490#12522#26368#22823#35501#36796#12469#12452#12474
         LabelPosition = lpLeft
         NumbersOnly = True
-        TabOrder = 26
+        TabOrder = 27
       end
       object ExtTxViewerGroupBox: TGroupBox
         Left = 460
@@ -3374,7 +3374,7 @@ object OptionDlg: TOptionDlg
         Height = 76
         Anchors = [akLeft, akTop, akRight]
         Caption = #22806#37096#12499#12517#12450#12540
-        TabOrder = 28
+        TabOrder = 29
         object ExtTxViewerEdit: TEdit
           Left = 10
           Top = 18
@@ -3427,11 +3427,11 @@ object OptionDlg: TOptionDlg
       end
       object BinMemMapedCheckBox: TCheckBox
         Left = 684
-        Top = 411
+        Top = 415
         Width = 203
         Height = 17
         Caption = #12513#12514#12522#12510#12483#12503#12489#12501#12449#12452#12523#12392#12375#12390#38283#12367
-        TabOrder = 27
+        TabOrder = 28
       end
       object ShowRulerCheckBox: TCheckBox
         Left = 20
@@ -3601,7 +3601,7 @@ object OptionDlg: TOptionDlg
       object UseXd2txCheckBox: TCheckBox
         Left = 470
         Top = 315
-        Width = 199
+        Width = 205
         Height = 17
         Caption = 'xd2txlib.dll '#12391#12486#12461#12473#12488#34920#31034
         TabOrder = 22
@@ -3655,10 +3655,18 @@ object OptionDlg: TOptionDlg
       object AltBackSlashCheckBox: TCheckBox
         Left = 470
         Top = 340
-        Width = 199
+        Width = 205
         Height = 17
         Caption = '"\" '#12434' "'#8726'"(U+2216)'#12391#34920#31034
         TabOrder = 24
+      end
+      object DecDfmStrCheckBox: TCheckBox
+        Left = 684
+        Top = 341
+        Width = 209
+        Height = 17
+        Caption = '.dfm '#12501#12449#12452#12523#12398#25991#23383#21015#20516#12434#12487#12467#12540#12489
+        TabOrder = 25
       end
     end
     object ImgViewerSheet: TTabSheet
@@ -4490,8 +4498,8 @@ object OptionDlg: TOptionDlg
           695
           79)
         object TLabel
-          Left = 255
-          Top = 48
+          Left = 168
+          Top = 51
           Width = 44
           Height = 13
           Alignment = taRightJustify
@@ -4519,9 +4527,9 @@ object OptionDlg: TOptionDlg
           OnClick = UnRegCmdCheckBoxClick
         end
         object PrmComboBox: TComboBox
-          Left = 168
+          Left = 216
           Top = 47
-          Width = 481
+          Width = 432
           Height = 22
           Hint = #12497#12521#12513#12540#12479
           Style = csOwnerDrawFixed
@@ -4664,7 +4672,7 @@ object OptionDlg: TOptionDlg
     object AssoSheet: TTabSheet
       HelpContext = 13
       Caption = #38306#36899#20184#12369
-      ImageIndex = 2
+      ImageIndex = -1
       object AssociateListBox: TListBox
         Left = 0
         Top = 0
@@ -4791,7 +4799,7 @@ object OptionDlg: TOptionDlg
     object ExtMenuSheet: TTabSheet
       HelpContext = 14
       Caption = #36861#21152#12513#12491#12517#12540
-      ImageIndex = 5
+      ImageIndex = -1
       object ExtMenuPanel: TPanel
         Left = 0
         Top = 434
@@ -5448,7 +5456,7 @@ object OptionDlg: TOptionDlg
         object IniWin1RadioBtn: TRadioButton
           Left = 15
           Top = 46
-          Width = 200
+          Width = 106
           Height = 17
           Caption = #25351#23450#12469#12452#12474
           TabOrder = 1
@@ -6230,7 +6238,7 @@ object OptionDlg: TOptionDlg
         TabOrder = 13
       end
     end
-    object CommadSheet: TTabSheet
+    object CommandSheet: TTabSheet
       HelpContext = 19
       Caption = #12467#12510#12531#12489
       ImageIndex = -1
@@ -6805,7 +6813,7 @@ object OptionDlg: TOptionDlg
     object EventSheet: TTabSheet
       HelpContext = 21
       Caption = #12452#12505#12531#12488
-      ImageIndex = 12
+      ImageIndex = -1
       DesignSize = (
         906
         584)
