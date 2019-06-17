@@ -265,6 +265,7 @@ __published:	// IDE で管理されるコンポーネント
 	TCheckBox *KeepZoomCheckBox;
 	TCheckBox *LimitBinCsrCheckBox;
 	TCheckBox *LogDebugInfCheckBox;
+	TCheckBox *LogDestinationCheckBox;
 	TCheckBox *LogErrMsgCheckBox;
 	TCheckBox *LogErrOnlyCheckBox;
 	TCheckBox *LogFullPathCheckBox;
