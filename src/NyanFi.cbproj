@@ -49,7 +49,7 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1041</VerInfo_Locale>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
-        <VerInfo_Keys>CompanyName=;FileDescription=2画面ファイラー NyanFi (x86);FileVersion=13.8.3.0;InternalName=NyanFi;LegalCopyright=2013-2019 by Nekomimi;LegalTrademarks=;OriginalFilename=NyanFi.exe;ProductName=NyanFi;ProductVersion=13.8.3.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileDescription=2画面ファイラー NyanFi (x86);FileVersion=13.8.4.0;InternalName=NyanFi;LegalCopyright=2013-2019 by Nekomimi;LegalTrademarks=;OriginalFilename=NyanFi.exe;ProductName=NyanFi;ProductVersion=13.8.4.0;Comments=</VerInfo_Keys>
         <ILINK_LibraryPath>$(BDS)\lib\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <ProjectType>CppVCLApplication</ProjectType>
         <Multithreaded>true</Multithreaded>
@@ -65,7 +65,7 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
         <ILINK_AdditionalOptions>-GF:LARGEADDRESSAWARE</ILINK_AdditionalOptions>
         <VerInfo_MinorVer>8</VerInfo_MinorVer>
-        <VerInfo_Release>3</VerInfo_Release>
+        <VerInfo_Release>4</VerInfo_Release>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
@@ -379,6 +379,10 @@
         <CppCompile Include="Global.cpp">
             <DependentOn>$(BDS)\Projects\NyanFi\Global.h</DependentOn>
             <BuildOrder>5</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="GlobalDark.cpp">
+            <DependentOn>GlobalDark.h</DependentOn>
+            <BuildOrder>113</BuildOrder>
         </CppCompile>
         <CppCompile Include="GraphFrm.cpp">
             <Form>GraphForm</Form>
@@ -699,29 +703,29 @@
             <IgnorePath>true</IgnorePath>
         </LibFiles>
         <FormResources Include="Splash.dfm"/>
-        <FormResources Include="SrtModDlg.dfm"/>
+        <FormResources Include="ShareDlg.dfm"/>
+        <FormResources Include="RegExChk.dfm"/>
         <FormResources Include="RenDlg.dfm"/>
         <FormResources Include="SameDlg.dfm"/>
-        <FormResources Include="ShareDlg.dfm"/>
-        <FormResources Include="TaskDlg.dfm"/>
         <FormResources Include="TagDlg.dfm"/>
+        <FormResources Include="TaskDlg.dfm"/>
+        <FormResources Include="TabDlg.dfm"/>
+        <FormResources Include="SrtModDlg.dfm"/>
         <FormResources Include="SubView.dfm"/>
         <FormResources Include="SyncDlg.dfm"/>
-        <FormResources Include="TabDlg.dfm"/>
+        <FormResources Include="MaskDlg.dfm"/>
         <FormResources Include="MaskSelDlg.dfm"/>
         <FormResources Include="MemoFrm.dfm"/>
-        <FormResources Include="ModalScr.dfm"/>
-        <FormResources Include="MaskDlg.dfm"/>
+        <FormResources Include="KeyDlg.dfm"/>
         <FormResources Include="LoupeFrm.dfm"/>
         <FormResources Include="MainFrm.dfm"/>
+        <FormResources Include="OptDlg.dfm"/>
         <FormResources Include="PackDlg.dfm"/>
         <FormResources Include="PrnImgDlg.dfm"/>
-        <FormResources Include="RegExChk.dfm"/>
-        <FormResources Include="OptDlg.dfm"/>
+        <FormResources Include="ModalScr.dfm"/>
         <FormResources Include="NewDlg.dfm"/>
         <FormResources Include="XmlView.dfm"/>
         <FormResources Include="UserMdl.dfm"/>
-        <FormResources Include="KeyDlg.dfm"/>
         <FormResources Include="DebugFrm.dfm"/>
         <FormResources Include="DiffDlg.dfm"/>
         <FormResources Include="DirDlg.dfm"/>
@@ -749,6 +753,7 @@
         <FormResources Include="CmdListDlg.dfm"/>
         <FormResources Include="ChInfFrm.dfm"/>
         <FormResources Include="ChmodDlg.dfm"/>
+        <FormResources Include="ExeDlg.dfm"/>
         <FormResources Include="HistFrm.dfm"/>
         <FormResources Include="HistDlg.dfm"/>
         <FormResources Include="GraphFrm.dfm"/>
@@ -758,20 +763,19 @@
         <FormResources Include="JoinDlg.dfm"/>
         <FormResources Include="InpDir.dfm"/>
         <FormResources Include="InpCmds.dfm"/>
-        <FormResources Include="FileInfDlg.dfm"/>
         <FormResources Include="FindDlg.dfm"/>
         <FormResources Include="FindKey.dfm"/>
-        <FormResources Include="FileExtDlg.dfm"/>
-        <FormResources Include="ExeDlg.dfm"/>
+        <FormResources Include="FindTag.dfm"/>
+        <FormResources Include="FileInfDlg.dfm"/>
         <FormResources Include="ExpCsv.dfm"/>
         <FormResources Include="ExTViewer.dfm"/>
-        <FormResources Include="GenInfDlg.dfm"/>
+        <FormResources Include="FileExtDlg.dfm"/>
         <FormResources Include="GitTag.dfm"/>
         <FormResources Include="GitView.dfm"/>
-        <FormResources Include="FuncDlg.dfm"/>
-        <FormResources Include="FindTag.dfm"/>
+        <FormResources Include="GenInfDlg.dfm"/>
         <FormResources Include="FindTxtDlg.dfm"/>
         <FormResources Include="FtpDlg.dfm"/>
+        <FormResources Include="FuncDlg.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -860,7 +864,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\..\lib\win32\release\psdk\shlwapi.lib" Configuration="Release" Class="ProjectFile">
+                <DeployFile LocalName="HNDPIC_R.CUR" Configuration="Release" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
@@ -873,12 +877,6 @@
                 </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32260.dll" Class="DependencyModule">
                     <Platform Name="Win32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="HNDPIC_R.CUR" Configuration="Release" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -950,19 +948,13 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32c240.dll" Class="DependencyModule">
-                    <Platform Name="Win32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="..\..\lib\win32\release\psdk\netapi32.lib" Configuration="Release" Class="ProjectFile">
-                    <Platform Name="Win32">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64120.dll" Class="DependencyModule">
                     <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32c240.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -1039,6 +1031,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="P:\lib\win32\release\psdk\netapi32.lib" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32240.dll" Class="DependencyModule">
                     <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
@@ -1073,6 +1071,12 @@
                 </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32250.dll" Class="DependencyModule">
                     <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="P:\lib\win32\release\psdk\shlwapi.lib" Configuration="Release" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
