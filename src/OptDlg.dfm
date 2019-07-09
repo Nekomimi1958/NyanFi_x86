@@ -7323,11 +7323,14 @@ object OptionDlg: TOptionDlg
     AutoHotkeys = maManual
     AutoPopup = False
     Images = IconImgListP
+    OwnerDraw = True
+    OnPopup = TestPopupMenuPopup
     Left = 172
     Top = 622
   end
   object IconImgListP: TImageList
-    BkColor = clBtnFace
+    ColorDepth = cd32Bit
+    BkColor = 15790320
     Left = 246
     Top = 621
   end
