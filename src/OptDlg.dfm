@@ -7330,7 +7330,6 @@ object OptionDlg: TOptionDlg
   end
   object IconImgListP: TImageList
     ColorDepth = cd32Bit
-    BkColor = 15790320
     Left = 246
     Top = 621
   end
