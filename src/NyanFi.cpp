@@ -9,9 +9,9 @@
 //---------------------------------------------------------------------------
 USEFORM("Splash.cpp", SplashForm);
 USEFORM("ShareDlg.cpp", NetShareDlg);
+USEFORM("SameDlg.cpp", SameNameDlg);
 USEFORM("RegExChk.cpp", RegExChecker);
 USEFORM("RenDlg.cpp", RenameDlg);
-USEFORM("SameDlg.cpp", SameNameDlg);
 USEFORM("TagDlg.cpp", TagManDlg);
 USEFORM("TaskDlg.cpp", TaskManDlg);
 USEFORM("TabDlg.cpp", TabSetDlg);
@@ -82,7 +82,9 @@ USEFORM("GenInfDlg.cpp", GeneralInfoDlg);
 USEFORM("FindTxtDlg.cpp", FindTextDlg);
 USEFORM("FtpDlg.cpp", FtpConnectDlg);
 USEFORM("FuncDlg.cpp", FuncListDlg);
+
 //---------------------------------------------------------------------------
+#include <VersionHelpers.h>
 #include "Global.h"
 #include "Splash.h"
 
@@ -172,6 +174,9 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR lpCmdLine, int)
 		Screen->Cursor = crHourGlass;
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
+
+		//ランドスケープモードに固定
+		if (IsWindows8OrGreater()) ::SetDisplayAutoRotationPreferences(ORIENTATION_PREFERENCE_LANDSCAPE);
 
 		//INIファイルの初期化
 		IniFile = new UsrIniFile(inam);
