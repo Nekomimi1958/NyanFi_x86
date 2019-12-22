@@ -59,6 +59,8 @@ __fastcall TOptionDlg::TOptionDlg(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TOptionDlg::FormCreate(TObject *Sender)
 {
+	DlgInitialized = false;
+
 	SplashHint = new UsrHintWindow(this);
 	SplashHint->Canvas->Font->Assign(HintFont);
 	SplashHint->Canvas->Font->Color = col_fgHint;
