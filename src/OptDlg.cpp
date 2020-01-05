@@ -595,6 +595,7 @@ void __fastcall TOptionDlg::FormCreate(TObject *Sender)
 	SysAtrCheckBox->Tag 		= (int)&ShowSystemAtr;
 	DispRegNameCheckBox->Tag	= (int)&DispRegName;
 	UncToNetDriveCheckBox->Tag	= (int)&UncToNetDrive;
+	CompInTitleBarCheckBox->Tag = (int)&CompInTitleBar;
 	PathInTitleBarCheckBox->Tag = (int)&PathInTitleBar;
 	UseIndIconCheckBox->Tag 	= (int)&UseIndIcon;
 	OmitEndOfNameCheckBox->Tag	= (int)&OmitEndOfName;
