@@ -9,9 +9,9 @@
 //---------------------------------------------------------------------------
 USEFORM("Splash.cpp", SplashForm);
 USEFORM("ShareDlg.cpp", NetShareDlg);
-USEFORM("SameDlg.cpp", SameNameDlg);
 USEFORM("RegExChk.cpp", RegExChecker);
 USEFORM("RenDlg.cpp", RenameDlg);
+USEFORM("SameDlg.cpp", SameNameDlg);
 USEFORM("TagDlg.cpp", TagManDlg);
 USEFORM("TaskDlg.cpp", TaskManDlg);
 USEFORM("TabDlg.cpp", TabSetDlg);
@@ -82,7 +82,6 @@ USEFORM("GenInfDlg.cpp", GeneralInfoDlg);
 USEFORM("FindTxtDlg.cpp", FindTextDlg);
 USEFORM("FtpDlg.cpp", FtpConnectDlg);
 USEFORM("FuncDlg.cpp", FuncListDlg);
-
 //---------------------------------------------------------------------------
 #include <VersionHelpers.h>
 #include "Global.h"
@@ -225,6 +224,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR lpCmdLine, int)
 		Application->CreateForm(__classid(TSameNameDlg), &SameNameDlg);
 		Application->CreateForm(__classid(TInpDirDlg), &InpDirDlg);
 		Application->CreateForm(__classid(TGraphForm), &GraphForm);
+		Application->CreateForm(__classid(TNetShareDlg), &NetShareDlg);
 		cursor_Default();
 		Application->Run();
 	}
