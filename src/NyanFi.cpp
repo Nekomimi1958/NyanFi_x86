@@ -82,6 +82,7 @@ USEFORM("GenInfDlg.cpp", GeneralInfoDlg);
 USEFORM("FindTxtDlg.cpp", FindTextDlg);
 USEFORM("FtpDlg.cpp", FtpConnectDlg);
 USEFORM("FuncDlg.cpp", FuncListDlg);
+USEFORM("JsonView.cpp", JsonViewer);
 //---------------------------------------------------------------------------
 #include <VersionHelpers.h>
 #include "Global.h"
