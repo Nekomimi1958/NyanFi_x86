@@ -61,13 +61,18 @@
 </div>
 
 <div class="spc_box">
-先頭に &quot;<b>shell:</b>&quot; を付けると特殊フォルダを指定でき、エクスプローラで開きます。<br>
-　<b>例</b>: <span class="inp_box">shell:ControlPanelFolder</span>　コントロールパネルを開く<br>
+パスワード保護されている共有フォルダのUNCパスでは、その後に <b>:</b> (コロン)で区切って接続ユーザ名を指定できます<br>
+　<b>例</b>: <span class="inp_box">\\HOGE\share\:nyanko</span><br>
+未接続だった場合、このユーザ名でネットワーク資格情報の入力ダイアログによる接続を試みます。なおユーザ名が指定されていない場合は、デフォルトとして現在のログインユーザ名を明示的に用います。<br>
 </div>
-
 <div class="spc_box">
 <b>\\</b> で始まるコンピュータ名だけを指定すると、共有フォルダ一覧(<a href="hid00005.htm#ShareList">ShareList</a>)が表示されます<br>
 　<b>例</b>: <span class="inp_box">\\FILESERVER</span><br>
+</div>
+
+<div class="spc_box">
+先頭に &quot;<b>shell:</b>&quot; を付けると特殊フォルダを指定でき、エクスプローラで開きます。<br>
+　<b>例</b>: <span class="inp_box">shell:ControlPanelFolder</span>　コントロールパネルを開く<br>
 </div>
 
 <div class="spc_box">
