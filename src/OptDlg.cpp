@@ -1262,6 +1262,68 @@ void __fastcall TOptionDlg::SetKeyComboBox()
 	AppKeyComboBox->Items->Insert(0, EmptyStr);
 	if (!k.IsEmpty()) AppKeyComboBox->ItemIndex = AppKeyComboBox->Items->IndexOf(k);
 }
+
+//---------------------------------------------------------------------------
+//キー選択コンボボックスの内部状態を更新
+//---------------------------------------------------------------------------
+void __fastcall TOptionDlg::UpdateKeyComboStt()
+{
+	cursor_HourGlass();
+
+	for (int i=0; i<KeyComboBox->Items->Count; i++)  KeyComboBox->Items->Objects[i]  = (TObject*)0;
+	for (int i=0; i<Key2ComboBox->Items->Count; i++) Key2ComboBox->Items->Objects[i] = (TObject*)0;
+
+	UnicodeString sstr;
+	if (SelCheckBox->Checked)   sstr += KeyStr_SELECT;
+	if (ShiftCheckBox->Checked) sstr += KeyStr_Shift;
+	if (CtrlCheckBox->Checked)  sstr += KeyStr_Ctrl;
+	if (AltCheckBox->Checked)   sstr += KeyStr_Alt;
+
+	std::unique_ptr<TStringList> key_lst(new TStringList());
+	for (int i=0; i<KeyListBox->Items->Count; i++) {
+		UnicodeString kstr = get_tkn_r(KeyListBox->Items->Names[i], ':');
+		if (sstr.IsEmpty()) {
+			int p = kstr.Pos('+');  if (p>1 && kstr[p - 1]!='_') continue;
+			key_lst->Add(kstr);
+		}
+		else {
+			if (remove_top_text(kstr, sstr)) key_lst->Add(kstr);
+		}
+	}
+
+	UnicodeString key1;
+	for (int i=0; i<key_lst->Count; i++) {
+		UnicodeString kstr = key_lst->Strings[i];
+		if (StartsText(KeyComboBox->Text + "~", kstr)) {
+			key1 = KeyComboBox->Text;
+			break;
+		}
+	}
+
+	for (int i=0; i<key_lst->Count; i++) {
+		UnicodeString kstr = key_lst->Strings[i];
+		//2ストローク
+		if (ContainsStr(kstr, "~")) {
+			UnicodeString key = get_tkn(kstr, '~');
+			int idx = KeyComboBox->Items->IndexOf(key);
+			if (idx!=-1) KeyComboBox->Items->Objects[idx] = (TObject*)2;	//開始キー
+			if (SameText(key1, key)) {
+				int idx2 = Key2ComboBox->Items->IndexOf(get_tkn_r(kstr, '~'));
+				if (idx2!=-1) Key2ComboBox->Items->Objects[idx2] = (TObject*)1;
+			}
+		}
+		//通常
+		else {
+			int idx = KeyComboBox->Items->IndexOf(kstr);
+			if (idx!=-1) KeyComboBox->Items->Objects[idx] = (TObject*)1;
+		}
+	}
+
+	KeyComboBox->Repaint();
+	Key2ComboBox->Repaint();
+	cursor_Default();
+}
+
 //---------------------------------------------------------------------------
 void __fastcall TOptionDlg::KeybdRadioGroupClick(TObject *Sender)
 {
@@ -3017,6 +3079,7 @@ void __fastcall TOptionDlg::KeyTabControlChanging(TObject *Sender, bool &AllowCh
 void __fastcall TOptionDlg::KeyTabControlChange(TObject *Sender)
 {
 	KeyListBox->Items->Assign(KeyListBuf[KeyTabControl->TabIndex]);
+	UpdateKeyComboStt();
 
 	Key2ComboBox->ItemIndex = -1;
 	Key2ComboBox->Enabled	= (KeyTabControl->TabIndex==0 || KeyTabControl->TabIndex==2 || KeyTabControl->TabIndex==3);
@@ -3046,6 +3109,29 @@ void __fastcall TOptionDlg::KeyHeaderControlSectionClick(THeaderControl *HeaderC
 {
 	KeySortMode = Section->Index;
 	SortKeyListBox();
+}
+
+//---------------------------------------------------------------------------
+//キーコンボボックスの描画
+//---------------------------------------------------------------------------
+void __fastcall TOptionDlg::KeyComboBoxDrawItem(TWinControl *Control, int Index, TRect &Rect,
+	TOwnerDrawState State)
+{
+	TComboBox *cp = (TComboBox*)Control;
+	TCanvas   *cv = cp->Canvas;
+	int xp = Rect.Left + ScaledIntX(2);
+	int yp = Rect.Top;
+
+	SetHighlight(cv, State.Contains(odSelected));
+	cv->FillRect(Rect);
+	cv->TextOut(xp, yp, ReplaceText(cp->Items->Strings[Index], "10Key", "10K"));
+
+	int stt = (int)cp->Items->Objects[Index];
+	if (stt>0) {
+		xp = Rect.Right - cv->TextWidth("□") - ScaledIntX(2);
+		cv->Font->Color = AdjustColor(cv->Font->Color, ADJCOL_FGLIST);
+		cv->TextOut(xp, yp, (stt==2)? "~" : "□");
+	}
 }
 
 //---------------------------------------------------------------------------
@@ -3135,7 +3221,7 @@ void __fastcall TOptionDlg::CmdComboBoxDrawItem(TWinControl *Control, int Index,
 	TComboBox *cp = (TComboBox*)Control;
 	TCanvas   *cv = cp->Canvas;
 	int xp = Rect.Left + ScaledIntX(4);
-	int yp = Rect.Top + get_TopMargin(cv);
+	int yp = Rect.Top;
 
 	UnicodeString lbuf = cp->Items->Strings[Index];
 	UnicodeString cmd  = split_tkn(lbuf, ' ');
@@ -3287,6 +3373,8 @@ void __fastcall TOptionDlg::KeyListBoxClick(TObject *Sender)
 		}
 	}
 
+	UpdateKeyComboStt();
+
 	inh_KeySet--;
 }
 //---------------------------------------------------------------------------
@@ -3326,6 +3414,8 @@ void __fastcall TOptionDlg::KeySetClick(TObject *Sender)
 		lp->ItemIndex = idx;
 		KeyListBoxClick(lp);
 	}
+
+	UpdateKeyComboStt();
 }
 
 //---------------------------------------------------------------------------
@@ -3740,6 +3830,7 @@ void __fastcall TOptionDlg::ChgKeyActionUpdate(TObject *Sender)
 void __fastcall TOptionDlg::DelKeyActionExecute(TObject *Sender)
 {
 	delete_ListItem(KeyListBox);
+	UpdateKeyComboStt();
 	SetCmdCombo();
 }
 //---------------------------------------------------------------------------
