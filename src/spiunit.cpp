@@ -2,12 +2,7 @@
 // Susie 32bit ‘ŒÉ Plug-in ‘€ìƒNƒ‰ƒX									//
 //																		//
 //----------------------------------------------------------------------//
-#include <vcl.h>
 #pragma hdrstop
-#include <tchar.h>
-#include <memory>
-#include <System.IOUtils.hpp>
-#include <System.StrUtils.hpp>
 #include "usr_str.h"
 #include "usr_file_ex.h"
 #include "usr_shell.h"
