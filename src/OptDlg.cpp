@@ -2,7 +2,6 @@
 // NyanFi																//
 //  オプション設定														//
 //----------------------------------------------------------------------//
-#pragma hdrstop
 #include "usr_shell.h"
 #include "usr_xd2tx.h"
 #include "usr_arc.h"
@@ -999,7 +998,7 @@ void __fastcall TOptionDlg::FormShow(TObject *Sender)
 	for (int i=0; i<usr_TAG->TagNameList->Count; i++) {
 		UnicodeString tag = usr_TAG->TagNameList->Strings[i];
 		TagColListBox->Items->Add(
-			UnicodeString().sprintf(_T("%s=%d"), tag.c_str(), usr_TAG->GetColor(tag, clNone)));
+			UnicodeString().sprintf(_T("%s=%d"), tag.c_str(), usr_TAG->GetColor(tag, col_None)));
 	}
 
 	TCheckListBox *lp = ExtMenuListBox;
@@ -1705,7 +1704,7 @@ void __fastcall TOptionDlg::DisableColActionExecute(TObject *Sender)
 {
 	TListBox *lp = OptColListBox;
 	if (lp->ItemIndex!=-1) {
-		ColBufList->Values[lp->Items->Names[lp->ItemIndex]] = IntToStr(clNone);
+		ColBufList->Values[lp->Items->Names[lp->ItemIndex]] = IntToStr(col_None);
 		lp->Invalidate();
 	}
 }
@@ -1726,7 +1725,7 @@ void __fastcall TOptionDlg::DisableTimColActionExecute(TObject *Sender)
 {
 	TListBox *lp = TimColListBox;
 	if (lp->ItemIndex!=-1) {
-		ColBufList->Values[lp->Items->Names[lp->ItemIndex]] = IntToStr(clNone);
+		ColBufList->Values[lp->Items->Names[lp->ItemIndex]] = IntToStr(col_None);
 		lp->Invalidate();
 	}
 }
@@ -1756,8 +1755,8 @@ void __fastcall TOptionDlg::SpuitImageMouseDown(TObject *Sender, TMouseButton Bu
 		if (lp->ItemIndex==-1) return;
 
 		col_def = (SpuitTag==3)?
-					(TColor)lp->Items->ValueFromIndex[lp->ItemIndex].ToIntDef(clNone) :
-					(TColor)ColBufList->Values[lp->Items->Names[lp->ItemIndex]].ToIntDef(clNone);
+					(TColor)lp->Items->ValueFromIndex[lp->ItemIndex].ToIntDef(col_None) :
+					(TColor)ColBufList->Values[lp->Items->Names[lp->ItemIndex]].ToIntDef(col_None);
 	}
 
 	//スウォッチブック
@@ -1820,7 +1819,7 @@ void __fastcall TOptionDlg::ExtColListBoxClick(TObject *Sender)
 {
 	int idx = ExtColListBox->ItemIndex;  if (idx==-1) return;
 	UnicodeString lbuf = ExtColListBox->Items->Strings[idx];
-	RefExtColPanel->Color = (TColor)split_tkn(lbuf, ',').ToIntDef(clNone);
+	RefExtColPanel->Color = (TColor)split_tkn(lbuf, ',').ToIntDef(col_None);
 	ExtColorEdit->Text	  = lbuf;
 }
 
@@ -1837,7 +1836,7 @@ void __fastcall TOptionDlg::ExtColListBoxDrawItem(TWinControl *Control, int Inde
 	int yp = Rect.Top  + get_TopMargin(cv);
 
 	UnicodeString lbuf = lp->Items->Strings[Index];
-	cv->Font->Color = (TColor)split_tkn(lbuf, ',').ToIntDef(clNone);
+	cv->Font->Color = (TColor)split_tkn(lbuf, ',').ToIntDef(col_None);
 	bool is_dot = USAME_TS(lbuf, ".");
 	UnicodeString ext = ReplaceStr(lbuf, ".", " .");
 	cv->Brush->Color = col_bgList;
@@ -1981,8 +1980,8 @@ void __fastcall TOptionDlg::TagColListBoxDrawItem(TWinControl *Control, int Inde
 
 	UnicodeString tag = lp->Items->Names[Index];
 	UnicodeString stt;
-	TColor col = (TColor)lp->Items->ValueFromIndex[Index].ToIntDef(clNone);
-	if (col==clNone) {
+	TColor col = (TColor)lp->Items->ValueFromIndex[Index].ToIntDef(col_None);
+	if (col==col_None) {
 		col = (TColor)ColBufList->Values["fgTagNam"].ToIntDef(clBlack);;
 		stt = "<デフォルト>";
 	}
@@ -2033,7 +2032,7 @@ void __fastcall TOptionDlg::DefTagColActionExecute(TObject *Sender)
 {
 	TListBox *lp = TagColListBox;
 	if (lp->ItemIndex!=-1) {
-		lp->Items->Values[lp->Items->Names[lp->ItemIndex]] = IntToStr(clNone);
+		lp->Items->Values[lp->Items->Names[lp->ItemIndex]] = IntToStr(col_None);
 		lp->Invalidate();
 	}
 }
@@ -2042,7 +2041,7 @@ void __fastcall TOptionDlg::DefTagColActionUpdate(TObject *Sender)
 {
 	TListBox *lp = TagColListBox;
 	int idx = lp->ItemIndex;
-	((TAction*)Sender)->Enabled = (idx!=-1 && lp->Items->ValueFromIndex[idx].ToIntDef(clNone) != clNone);
+	((TAction*)Sender)->Enabled = (idx!=-1 && lp->Items->ValueFromIndex[idx].ToIntDef(col_None)!=col_None);
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionDlg::RevTagColCheckBoxClick(TObject *Sender)

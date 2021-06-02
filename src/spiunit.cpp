@@ -2,7 +2,6 @@
 // Susie 32bit ‘ŒÉ Plug-in ‘€ìƒNƒ‰ƒX									//
 //																		//
 //----------------------------------------------------------------------//
-#pragma hdrstop
 #include "usr_str.h"
 #include "usr_file_ex.h"
 #include "usr_shell.h"

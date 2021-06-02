@@ -81,7 +81,6 @@ __published:	// IDE で管理されるコンポーネント
 	TButton *AsoChgBtn;
 	TButton *AsoDelBtn;
 	TButton *AsoRefBtn;
-	TButton *TestSndWarnBtn;
 	TButton *CanButton;
 	TButton *ChgColBtn;
 	TButton *ChgDrvBtn;
@@ -164,6 +163,7 @@ __published:	// IDE で管理されるコンポーネント
 	TButton *SpiConfigBtn;					//<<<<<<<X86_SPI
 	TButton *TestSndFindFinBtn;
 	TButton *TestSndTaskFinBtn;
+	TButton *TestSndWarnBtn;
 	TButton *TestSndWatchBtn;
 	TButton *UpAssBtn;
 	TButton *UpCmdBtn;

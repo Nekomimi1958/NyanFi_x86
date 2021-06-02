@@ -1,9 +1,6 @@
 //----------------------------------------------------------------------//
 // NyanFi																//
 //----------------------------------------------------------------------//
-#pragma hdrstop
-
-//---------------------------------------------------------------------------
 USEFORM("Splash.cpp", SplashForm);
 USEFORM("ShareDlg.cpp", NetShareDlg);
 USEFORM("RegExChk.cpp", RegExChecker);
@@ -81,7 +78,6 @@ USEFORM("FindTxtDlg.cpp", FindTextDlg);
 USEFORM("FtpDlg.cpp", FtpConnectDlg);
 USEFORM("FuncDlg.cpp", FuncListDlg);
 //---------------------------------------------------------------------------
-#include <VersionHelpers.h>
 #include "Global.h"
 #include "Splash.h"
 
