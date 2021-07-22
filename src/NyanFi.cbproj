@@ -66,7 +66,7 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1041</VerInfo_Locale>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
-        <VerInfo_Keys>CompanyName=;FileDescription=2画面ファイラー NyanFi (x86);FileVersion=15.0.4.0;InternalName=NyanFi;LegalCopyright=2013-2021 by Nekomimi;LegalTrademarks=;OriginalFilename=NyanFi.exe;ProductName=NyanFi;ProductVersion=15.0.4.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileDescription=2画面ファイラー NyanFi (x86);FileVersion=15.0.5.0;InternalName=NyanFi;LegalCopyright=2013-2021 by Nekomimi;LegalTrademarks=;OriginalFilename=NyanFi.exe;ProductName=NyanFi;ProductVersion=15.0.5.0;Comments=</VerInfo_Keys>
         <ILINK_LibraryPath>$(BDS)\lib\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <ProjectType>CppVCLApplication</ProjectType>
         <Multithreaded>true</Multithreaded>
@@ -83,7 +83,7 @@
         <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
         <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
-        <VerInfo_Release>4</VerInfo_Release>
+        <VerInfo_Release>5</VerInfo_Release>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
@@ -714,6 +714,9 @@
         <CppCompile Include="usr_msg.cpp">
             <BuildOrder>106</BuildOrder>
         </CppCompile>
+        <CppCompile Include="usr_scale.cpp">
+            <BuildOrder>117</BuildOrder>
+        </CppCompile>
         <CppCompile Include="usr_scrpanel.cpp">
             <BuildOrder>23</BuildOrder>
         </CppCompile>
@@ -776,7 +779,6 @@
         <FormResources Include="NewDlg.dfm"/>
         <FormResources Include="XmlView.dfm"/>
         <FormResources Include="UserMdl.dfm"/>
-        <FormResources Include="KeyDlg.dfm"/>
         <FormResources Include="DiffDlg.dfm"/>
         <FormResources Include="DirDlg.dfm"/>
         <FormResources Include="DistrDlg.dfm"/>
@@ -805,29 +807,30 @@
         <FormResources Include="CmdListDlg.dfm"/>
         <FormResources Include="ChInfFrm.dfm"/>
         <FormResources Include="ChmodDlg.dfm"/>
-        <FormResources Include="HistFrm.dfm"/>
-        <FormResources Include="GraphFrm.dfm"/>
+        <FormResources Include="ExpCsv.dfm"/>
         <FormResources Include="GrepOptDlg.dfm"/>
         <FormResources Include="HistDlg.dfm"/>
-        <FormResources Include="InspectFrm.dfm"/>
+        <FormResources Include="HistFrm.dfm"/>
         <FormResources Include="JoinDlg.dfm"/>
         <FormResources Include="JsonView.dfm"/>
-        <FormResources Include="InpExDlg.dfm"/>
+        <FormResources Include="KeyDlg.dfm"/>
+        <FormResources Include="InspectFrm.dfm"/>
         <FormResources Include="InpCmds.dfm"/>
         <FormResources Include="InpDir.dfm"/>
-        <FormResources Include="FindDlg.dfm"/>
+        <FormResources Include="InpExDlg.dfm"/>
+        <FormResources Include="GraphFrm.dfm"/>
         <FormResources Include="FindKey.dfm"/>
         <FormResources Include="FindTag.dfm"/>
-        <FormResources Include="FileInfDlg.dfm"/>
-        <FormResources Include="ExpCsv.dfm"/>
+        <FormResources Include="FindTxtDlg.dfm"/>
+        <FormResources Include="FindDlg.dfm"/>
         <FormResources Include="ExTViewer.dfm"/>
         <FormResources Include="FileExtDlg.dfm"/>
-        <FormResources Include="GitTag.dfm"/>
+        <FormResources Include="FileInfDlg.dfm"/>
         <FormResources Include="GitView.dfm"/>
-        <FormResources Include="GenInfDlg.dfm"/>
-        <FormResources Include="FindTxtDlg.dfm"/>
+        <FormResources Include="GitTag.dfm"/>
         <FormResources Include="FtpDlg.dfm"/>
         <FormResources Include="FuncDlg.dfm"/>
+        <FormResources Include="GenInfDlg.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

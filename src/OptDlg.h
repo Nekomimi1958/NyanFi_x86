@@ -23,6 +23,7 @@
 #include <Vcl.Graphics.hpp>
 #include <Vcl.ImgList.hpp>
 #include "MarkList.h"
+#include "usr_scale.h"
 #include "usr_swatch.h"
 #include "usr_hintwin.h"
 
@@ -1001,6 +1002,11 @@ private:	// ユーザー宣言
 		ExtMenuListBox->Invalidate();
 		ExtToolListBox->Invalidate();
 		EtcEditorListBox->Invalidate();
+	}
+
+	int  __fastcall ScaledThis(int n)
+	{
+		return (n * CurrentPPI / DEFAULT_PPI);
 	}
 
 public:		// ユーザー宣言
