@@ -11,4 +11,4 @@ http://nekomimi.la.coocan.jp/freesoft/nyanfi.htm
 
 ## Development Environment
 
-C++Builder 11.1 (BCC32C)
+C++Builder 11.2 (BCC32C)
