@@ -67,7 +67,7 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1041</VerInfo_Locale>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
-        <VerInfo_Keys>CompanyName=;FileDescription=2画面ファイラー NyanFi (x86);FileVersion=15.2.8.0;InternalName=NyanFi;LegalCopyright=2013-2022 by Nekomimi;LegalTrademarks=;OriginalFilename=NyanFi.exe;ProductName=NyanFi;ProductVersion=15.2.8.0;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=;FileDescription=2画面ファイラー NyanFi (x86);FileVersion=15.2.9.0;InternalName=NyanFi;LegalCopyright=2013-2022 by Nekomimi;LegalTrademarks=;OriginalFilename=NyanFi.exe;ProductName=NyanFi;ProductVersion=15.2.9.0;Comments=</VerInfo_Keys>
         <ILINK_LibraryPath>$(BDS)\lib\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
         <ProjectType>CppVCLApplication</ProjectType>
         <Multithreaded>true</Multithreaded>
@@ -85,7 +85,7 @@
         <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
         <VerInfo_MinorVer>2</VerInfo_MinorVer>
-        <VerInfo_Release>8</VerInfo_Release>
+        <VerInfo_Release>9</VerInfo_Release>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
@@ -139,7 +139,6 @@
         <LinkPackageStatics>rtl.lib;vcl.lib;vclx.lib;IndyProtocols.lib;IndyCore.lib;IndySystem.lib;vclimg.lib;xmlrtl.lib;vclactnband.lib;vclwinx.lib</LinkPackageStatics>
         <UsePackages>false</UsePackages>
         <Icon_MainIcon>NyanFi_Icon.ico</Icon_MainIcon>
-        <Debugger_RunParams>-IDebug.INI</Debugger_RunParams>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
