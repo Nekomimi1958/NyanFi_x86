@@ -1249,20 +1249,12 @@ void __fastcall TOptionDlg::SetKeyComboBox()
 	if (KeyKeyLabel) KeyKeyLabel->Caption = kmd.sprintf(_T("ƒL[ (%s)"), is_JpKeybd()? _T("JP") : _T("US"));
 	KeyboardLabel->Caption = kmd.sprintf(_T("(%s)"), (::GetKeyboardType(0)==7)? _T("JP") : _T("US"));
 
-	make_KeyList(KeyComboBox->Items);
-	make_KeyList(Key2ComboBox->Items);
-	Key2ComboBox->Items->Insert(0, EmptyStr);
+	assign_KeyList(KeyComboBox);
+	assign_KeyList(Key2ComboBox, true);
 	Key2ComboBox->Enabled = false;
 
-	UnicodeString k = HotKeyComboBox->Text;
-	make_KeyList(HotKeyComboBox->Items);
-	HotKeyComboBox->Items->Insert(0, EmptyStr);
-	if (!k.IsEmpty()) HotKeyComboBox->ItemIndex = HotKeyComboBox->Items->IndexOf(k);
-
-	k = AppKeyComboBox->Text;
-	make_KeyList(AppKeyComboBox->Items);
-	AppKeyComboBox->Items->Insert(0, EmptyStr);
-	if (!k.IsEmpty()) AppKeyComboBox->ItemIndex = AppKeyComboBox->Items->IndexOf(k);
+	assign_KeyList(HotKeyComboBox, true);
+	assign_KeyList(AppKeyComboBox, true);
 }
 
 //---------------------------------------------------------------------------
