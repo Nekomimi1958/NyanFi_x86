@@ -769,6 +769,7 @@ __published:	// IDE で管理されるコンポーネント
 	TTabSheet *TxtViewerSheet;
 	TVirtualImageList *IconVImgListP;
 	TImageCollection *ImgCollectionP;
+	TCheckBox *NoRoundWinCheckBox;
 
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
@@ -968,6 +969,7 @@ private:	// ユーザー宣言
 	void __fastcall WmDpiChanged(TMessage &msg)
 	{
 		TForm::Dispatch(&msg);
+		RefreshDarkMode(this);
 		UpdateMaxItemWidth();
 	}
 
