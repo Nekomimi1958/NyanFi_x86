@@ -26,6 +26,7 @@
 #include <Vcl.BaseImageCollection.hpp>
 #include <Vcl.ImageCollection.hpp>
 #include <Vcl.VirtualImageList.hpp>
+#include <Vcl.Imaging.pngimage.hpp>
 #include "usr_scale.h"
 #include "usr_swatch.h"
 #include "usr_hintwin.h"
@@ -296,6 +297,7 @@ __published:	// IDE で管理されるコンポーネント
 	TCheckBox *NoChkDirHistCheckBox;
 	TCheckBox *NoChkRUncCheckBox;
 	TCheckBox *NoChkWUncCheckBox;
+	TCheckBox *NoRoundWinCheckBox;
 	TCheckBox *NoSpcFExtCheckBox;
 	TCheckBox *NotShowNoTaskCheckBox;
 	TCheckBox *NotSortWLCheckBox;
@@ -615,6 +617,7 @@ __published:	// IDE で管理されるコンポーネント
 	TLabeledEdit *IconCacheEdit;
 	TLabeledEdit *ImgGridHEdit;
 	TLabeledEdit *ImgGridVEdit;
+	TLabeledEdit *InfPrvWaitEdit;
 	TLabeledEdit *IniWinHiEdit;
 	TLabeledEdit *IniWinLeftEdit;
 	TLabeledEdit *IniWinTopEdit;
@@ -769,7 +772,6 @@ __published:	// IDE で管理されるコンポーネント
 	TTabSheet *TxtViewerSheet;
 	TVirtualImageList *IconVImgListP;
 	TImageCollection *ImgCollectionP;
-	TCheckBox *NoRoundWinCheckBox;
 
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
