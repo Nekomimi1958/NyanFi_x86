@@ -110,7 +110,7 @@ SpiUnit::~SpiUnit()
 //---------------------------------------------------------------------------
 bool SpiUnit::TestFExt(UnicodeString fext, bool is_arc)
 {
-	if (fext.IsEmpty() || USAME_TS(fext, ".")) return false;
+	if (fext.IsEmpty() || SameStr(fext, ".")) return false;
 	if (!StartsStr('.', fext)) fext.Insert(".", 1);
 
 	bool found = false;
@@ -148,7 +148,7 @@ spi_info* SpiUnit::FindPlugin(UnicodeString fnam, bool is_arc)
 	if (PlgList->Count==0) return NULL;
 
 	UnicodeString fext = ExtractFileExt(fnam);
-	if (fext.IsEmpty() || USAME_TS(fext, ".")) return NULL;
+	if (fext.IsEmpty() || SameStr(fext, ".")) return NULL;
 
 	spi_info *r_sp = NULL;
 
