@@ -992,7 +992,7 @@ void __fastcall TOptionDlg::FormShow(TObject *Sender)
 	}
 
 	ColBufList->Assign(ColorList);
-	ModalColorBox->Selected = (TColor)get_ListIntVal(ColBufList, _T("ModalScr"), clBlack);
+	ModalColorBox->Selected = (TColor)get_ListIntVal(ColBufList, "ModalScr", clBlack);
 
 	AssociateListBox->Items->Assign(AssociateList);
 	EtcEditorListBox->Items->Assign(EtcEditorList);
@@ -1129,7 +1129,7 @@ void __fastcall TOptionDlg::FormDestroy(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
-bool __fastcall TOptionDlg::FormHelp(WORD Command, NativeInt Data, bool &CallHelp)
+bool __fastcall TOptionDlg::FormHelp(WORD Command, THelpEventData Data, bool &CallHelp)
 {
 	if (Command==HELP_CONTEXT || Command==HELP_CONTEXTPOPUP) {
 		if (PageControl1->ActivePage==KeySetSheet && (CmdComboBox->Focused() || PrmComboBox->Focused())) {
@@ -1919,7 +1919,7 @@ bool __fastcall TOptionDlg::CheckDuplExt(
 		TStringDynArray x_lst = SplitString(ExtColorEdit->Text, ".");
 		for (int i=0,idx=-1; i<lp->Count; i++) {
 			if (i==skip_idx) continue;
-			UnicodeString lbuf = get_tkn_r(lp->Items->Strings[i], ",");
+			UnicodeString lbuf = get_tkn_r(lp->Items->Strings[i], ',');
 			for (int j=0; j<x_lst.Length; j++) {
 				UnicodeString fext = x_lst[j];
 				if (test_FileExt(fext, lbuf) && dpl_lst->IndexOf(fext)==-1) {
@@ -1997,7 +1997,7 @@ void __fastcall TOptionDlg::FindXColEditChange(TObject *Sender)
 	}
 	else {
 		for (int i=0; i<lp->Count && idx==-1; i++)
-			if (test_FileExt(kwd, get_tkn_r(lp->Items->Strings[i], ","))) idx = i;
+			if (test_FileExt(kwd, get_tkn_r(lp->Items->Strings[i], ','))) idx = i;
 	}
 
 	lp->ItemIndex = idx;
@@ -3286,7 +3286,7 @@ void __fastcall TOptionDlg::CmdComboBoxDrawItem(TWinControl *Control, int Index,
 //---------------------------------------------------------------------------
 void __fastcall TOptionDlg::CmdComboBoxChange(TObject *Sender)
 {
-	UnicodeString cmd = get_tkn(CmdComboBox->Text," ");
+	UnicodeString cmd = get_tkn(CmdComboBox->Text, ' ');
 
 	//パラメータ項目を設定
 	std::unique_ptr<TStringList> p_list(new TStringList());
@@ -3439,7 +3439,7 @@ void __fastcall TOptionDlg::KeyListBoxDblClick(TObject *Sender)
 		UnicodeString lbl  = FKeyLabelBuf->Values[kstr];
 		UnicodeString tit = "ファンクションキー表示名の変更";
 		tit.cat_sprintf(_T(" - %s"), KeyListBuf[KeyTabControl->TabIndex]->Values[kstr].c_str());
-		UnicodeString prm;  prm.sprintf(_T("[%s]"), get_tkn_r(kstr, ":").c_str());
+		UnicodeString prm;  prm.sprintf(_T("[%s]"), get_tkn_r(kstr, ':').c_str());
 		if (input_query_ex(tit.c_str(), prm.c_str(), &lbl)) {
 			FKeyLabelBuf->Values[kstr] = lbl;
 			lp->Invalidate();

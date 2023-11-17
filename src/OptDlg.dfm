@@ -7631,7 +7631,7 @@ object OptionDlg: TOptionDlg
   end
   object ImgCollectionP: TImageCollection
     Images = <>
-    Left = 292
+    Left = 300
     Top = 622
   end
 end
